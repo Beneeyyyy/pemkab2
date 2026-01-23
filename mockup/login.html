@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Golkar Digital Command Center</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #ffd700 0%, #ffcc00 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .login-container {
+        width: 420px;
+        padding: 40px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        text-align: center;
+      }
+
+      .logo-large img {
+        width: 120px;
+        margin-bottom: 24px;
+      }
+
+      .system-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+      }
+
+      .system-subtitle {
+        color: #64748b;
+        font-size: 0.95rem;
+        margin-bottom: 32px;
+      }
+
+      .login-input {
+        width: 100%;
+        margin-bottom: 16px;
+        padding: 14px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        background: #f8fafc;
+        color: #1e293b;
+        font-size: 1rem;
+        outline: none;
+        transition: 0.2s;
+      }
+
+      .login-input:focus {
+        border-color: var(--primary-color);
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(255, 205, 0, 0.2);
+      }
+
+      .btn-login {
+        width: 100%;
+        padding: 16px;
+        background: var(--primary-color);
+        border: none;
+        border-radius: 8px;
+        color: #000;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.2s;
+        margin-top: 10px;
+      }
+
+      .btn-login:hover {
+        background: #e6b800;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px -1px rgba(255, 205, 0, 0.3);
+      }
+
+      .footer-text {
+        margin-top: 30px;
+        font-size: 0.8rem;
+        color: #94a3b8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="logo-large">
+        <img src="assets/logo.png" alt="Golkar Logo" />
+      </div>
+      <h1 class="system-title">GOLKAR COMMAND CENTER</h1>
+      <p class="system-subtitle">
+        Sistem Monitoring & Strategi Digital Terintegrasi
+      </p>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <input
+          type="text"
+          class="login-input"
+          placeholder="ID Pengguna"
+          value="ADMIN-PUSAT"
+        />
+        <input
+          type="password"
+          class="login-input"
+          placeholder="Kata Sandi"
+          value="••••••••"
+        />
+
+        <button type="submit" class="btn-login">Masuk ke Sistem</button>
+      </form>
+
+      <div class="footer-text">
+        &copy; 2024 DPP Partai Golkar. All Rights Reserved.<br />
+        Secure Ver. 1.0.2
+      </div>
+    </div>
+
+    <script>
+      function handleLogin(e) {
+        e.preventDefault();
+        const btn = document.querySelector(".btn-login");
+        btn.innerHTML =
+          '<i class="fa-solid fa-circle-notch fa-spin"></i> Memuat...';
+        btn.style.opacity = "0.9";
+
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
