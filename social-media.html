@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleman Smart Regency - Social Media Management</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/social-media.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="assets/logo.jpg" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside>
+      <nav class="sidebar">
+        <div class="nav-header">
+          <div class="logo">
+            <img src="assets/logo.jpg" alt="Pemkab Sleman Logo" />
+            <div>
+              <h2>Pemkab Sleman</h2>
+              <span>Command Center</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="nav-items">
+          <div class="nav-item" onclick="window.location.href='dashboard.html'">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='dashboard.html#warning'">
+            <i class="fa-solid fa-exclamation-triangle"></i>
+            <span>Early Warning</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='dashboard.html#issues'">
+            <i class="fa-solid fa-exclamation-circle"></i>
+            <span>Manajemen Isu</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='dashboard.html#optimizer'">
+            <i class="fa-solid fa-robot"></i>
+            <span>Public Comm. AI</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='dashboard.html#accounts'">
+            <i class="fa-brands fa-tiktok"></i>
+            <span>KOL Watchlist</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='dashboard.html#reports'">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Executive Reports</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='assignment.html'">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>Assignment Dinas</span>
+          </div>
+          
+          <div class="nav-item active" onclick="window.location.href='social-media.html'">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span>Social Media Management</span>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <header>
+        <div class="date-display" id="current-date">Loading...</div>
+        
+        <div class="ticker-wrap">
+          <div class="ticker">
+            <span> 🚀 TRENDING: #SlemanBersih • UPDATE: 15 isu aktif sedang dipantau • TARGET: Response time < 30 menit • TREND: Sentiment positif meningkat 8%</span>
+          </div>
+        </div>
+
+        <div class="user-profile">
+          <div class="avatar">SM</div>
+          <span>Social Media Admin</span>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Social Media Management Section -->
+        <section id="social-media" class="view-section active">
+          <!-- Header -->
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="font-size: 2.5rem; color: #1e40af; margin-bottom: 10px;">
+              📱 Social Media Management
+            </h1>
+            <p style="font-size: 1.1rem; color: #64748b; margin-bottom: 20px;">
+              Kelola seluruh akun media sosial OPD dalam satu sistem terintegrasi
+            </p>
+          </div>
+          
+          <!-- Overview Statistics -->
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px;">
+            <div class="stat-card" style="border-top: 4px solid #3b82f6;">
+              <div class="stat-label">Total Akun</div>
+              <div class="stat-value">15</div>
+              <div class="stat-trend text-muted">Semua OPD</div>
+            </div>
+            <div class="stat-card" style="border-top: 4px solid #ef4444;">
+              <div class="stat-label">Scheduled Posts</div>
+              <div class="stat-value">2</div>
+              <div class="stat-trend text-warning">Hari ini</div>
+            </div>
+            <div class="stat-card" style="border-top: 4px solid #10b981;">
+              <div class="stat-label">Published Today</div>
+              <div class="stat-value">8</div>
+              <div class="stat-trend text-success">Aktif</div>
+            </div>
+            <div class="stat-card" style="border-top: 4px solid #f59e0b;">
+              <div class="stat-label">Avg Engagement</div>
+              <div class="stat-value">2.4K</div>
+              <div class="stat-trend text-muted">Total Reach</div>
+            </div>
+          </div>
+          
+          <!-- OPD Account Management -->
+          <div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <h3 style="color: #1a1a1a; margin: 0;">
+                <i class="fa-solid fa-users-gear"></i> Manajemen Akun per Dinas
+              </h3>
+              <button class="btn-generate" style="background: #10b981;" onclick="addNewOPD()">
+                <i class="fa-solid fa-plus"></i> Tambah OPD
+              </button>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+              <!-- PUPR Card -->
+              <div class="opd-card">
+                <div class="opd-header">
+                  <h4 style="color: #1a1a1a; margin: 0; font-size: 1.1rem;">
+                    <i class="fa-solid fa-building" style="color: #3b82f6;"></i> PUPR
+                  </h4>
+                  <div class="opd-status" style="background: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">
+                    Connected
+                  </div>
+                </div>
+                
+                <div class="opd-platforms">
+                  <div class="opd-platform">
+                    <i class="fa-brands fa-instagram" style="color: #E4405F;"></i>
+                    <span>Instagram</span>
+                    <span class="opd-handle">@pupr_sleman</span>
+                  </div>
+                  <div class="opd-platform">
+                    <i class="fa-brands fa-facebook" style="color: #1877F2;"></i>
+                    <span>Facebook</span>
+                    <span class="opd-handle">PUPR Sleman</span>
+                  </div>
+                  <div class="opd-platform">
+                    <i class="fa-brands fa-x-twitter" style="color: #000000;"></i>
+                    <span>Twitter/X</span>
+                    <span class="opd-handle">@PUPR_Sleman</span>
+                  </div>
+                </div>
+                
+                <div class="opd-actions">
+                  <button class="btn-generate" onclick="manageOPD('pupr')">
+                    <i class="fa-solid fa-cog"></i> Kelola
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Dishub Card -->
+              <div class="opd-card">
+                <div class="opd-header">
+                  <h4 style="color: #1a1a1a; margin: 0; font-size: 1.1rem;">
+                    <i class="fa-solid fa-truck" style="color: #f59e0b;"></i> Dishub
+                  </h4>
+                  <div class="opd-status" style="background: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">
+                    Connected
+                  </div>
+                </div>
+                
+                <div class="opd-platforms">
+                  <div class="opd-platform">
+                    <i class="fa-brands fa-instagram" style="color: #E4405F;"></i>
+                    <span>Instagram</span>
+                    <span class="opd-handle">@dishub_sleman</span>
+                  </div>
+                  <div class="opd-platform">
+                    <i class="fa-brands fa-facebook" style="color: #1877F2;"></i>
+                    <span>Facebook</span>
+                    <span class="opd-handle">Dishub Sleman</span>
+                  </div>
+                  <div class="opd-platform">
+                    <i class="fa-brands fa-tiktok" style="color: #000000;"></i>
+                    <span>TikTok</span>
+                    <span class="opd-handle">@dishub_sleman</span>
+                  </div>
+                </div>
+                
+                <div class="opd-actions">
+                  <button class="btn-generate" onclick="manageOPD('dishub')">
+                    <i class="fa-solid fa-cog"></i> Kelola
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Content Calendar & Scheduling -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;">
+            <!-- Calendar Section -->
+            <div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+              <h3 style="color: #1a1a1a; margin-bottom: 20px;">
+                <i class="fa-solid fa-calendar-days"></i> Kalender Konten
+              </h3>
+              
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-bottom: 20px;">
+                <div style="text-align: center; font-weight: 600; color: #374151; font-size: 0.8rem;">Sen</div>
+                <div style="text-align: center; font-weight: 600; color: #374151; font-size: 0.8rem;">Sel</div>
+                <div style="text-align: center; font-weight: 600; color: #374151; font-size: 0.8rem;">Rab</div>
+                <div style="text-align: center; font-weight: 600; color: #374151; font-size: 0.8rem;">Kam</div>
+                <div style="text-align: center; font-weight: 600; color: #374151; font-size: 0.8rem;">Jum</div>
+                <div style="text-align: center; font-weight: 600; color: #374151; font-size: 0.8rem;">Sab</div>
+                <div style="text-align: center; font-weight: 600; color: #374151; font-size: 0.8rem;">Min</div>
+              </div>
+              
+              <div id="calendar-days" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px;">
+                <!-- Calendar days will be generated by JavaScript -->
+              </div>
+              
+              <div class="calendar-legend">
+                <div class="legend-item">
+                  <div class="legend-dot today"></div>
+                  <span>Hari Ini</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-dot has-posts"></div>
+                  <span>Ada Jadwal Posting</span>
+                </div>
+              </div>
+              
+              <div style="text-align: center; margin-top: 15px;">
+                <button class="btn-generate" style="background: #10b981;" onclick="openCalendarModal()">
+                  <i class="fa-solid fa-plus"></i> Jadwalkan Posting
+                </button>
+              </div>
+            </div>
+            
+            <!-- Scheduling Section -->
+            <div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+              <h3 style="color: #1a1a1a; margin-bottom: 20px;">
+                <i class="fa-solid fa-clock"></i> Penjadwalan Otomatis
+              </h3>
+              
+              <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: #374151;">Pilih Dinas/OPD</label>
+                <select id="opd-select" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;">
+                  <option value="">Pilih OPD...</option>
+                  <option value="pupr">PUPR</option>
+                  <option value="dishub">Dishub</option>
+                  <option value="pdam">PDAM</option>
+                  <option value="bpbd">BPBD</option>
+                  <option value="dinkes">Dinkes</option>
+                </select>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: #374151;">Platform (Pilih satu atau lebih)</label>
+                <div class="platform-checkboxes" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                  <label class="platform-checkbox-item">
+                    <input type="checkbox" value="instagram" class="platform-checkbox">
+                    <i class="fa-brands fa-instagram" style="color: #E4405F;"></i>
+                    <span>Instagram</span>
+                  </label>
+                  <label class="platform-checkbox-item">
+                    <input type="checkbox" value="facebook" class="platform-checkbox">
+                    <i class="fa-brands fa-facebook" style="color: #1877F2;"></i>
+                    <span>Facebook</span>
+                  </label>
+                  <label class="platform-checkbox-item">
+                    <input type="checkbox" value="twitter" class="platform-checkbox">
+                    <i class="fa-brands fa-x-twitter" style="color: #000000;"></i>
+                    <span>Twitter/X</span>
+                  </label>
+                  <label class="platform-checkbox-item">
+                    <input type="checkbox" value="tiktok" class="platform-checkbox">
+                    <i class="fa-brands fa-tiktok" style="color: #000000;"></i>
+                    <span>TikTok</span>
+                  </label>
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: #374151;">Konten Posting</label>
+                <textarea id="post-content" placeholder="Tulis konten postingan di sini..." style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; resize: vertical; font-family: inherit;"></textarea>
+                <div style="text-align: right; margin-top: 5px;">
+                  <span id="char-count" style="font-size: 0.8rem; color: #64748b;">0 / 500 karakter</span>
+                </div>
+              </div>
+              
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <div>
+                  <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: #374151;">Tanggal</label>
+                  <input type="date" id="post-date" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;">
+                </div>
+                
+                <div>
+                  <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: #374151;">Waktu</label>
+                  <input type="time" id="post-time" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;">
+                </div>
+              </div>
+              
+              <div style="text-align: center; margin-top: 15px;">
+                <button class="btn-generate" style="background: #10b981;" onclick="schedulePost()">
+                  <i class="fa-solid fa-calendar-plus"></i> Simpan Jadwal
+                </button>
+                <button class="btn-generate" style="background: #6b7280;" onclick="viewSchedule()">
+                  <i class="fa-solid fa-list"></i> Lihat Jadwal
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Content Template -->
+          <div style="background: white; padding: 25px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <h3 style="color: #1a1a1a; margin: 0;">
+                <i class="fa-solid fa-file-lines"></i> Template Konten
+              </h3>
+              <button class="btn-generate" style="background: #10b981;" onclick="createTemplate()">
+                <i class="fa-solid fa-plus"></i> Buat Template
+              </button>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+              <!-- Template 1 -->
+              <div class="template-card">
+                <div class="template-header">
+                  <h4 style="color: #1a1a1a; margin: 0; font-size: 1rem;">
+                    <i class="fa-solid fa-bullhorn" style="color: #f59e0b;"></i> Pengumuman Infrastruktur
+                  </h4>
+                  <div class="template-category" style="background: #fef3c7; color: #92400e; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">
+                    PUPR
+                  </div>
+                </div>
+                
+                <div class="template-content">
+                  <div class="template-text">
+                    🏗️ Perbaikan jalan di Sinduharjo telah selesai! Terima kasih atas kesabaran warga. #SlemanBersih
+                  </div>
+                  <div class="template-meta">
+                    <span class="template-tag">Infrastruktur</span>
+                    <span class="template-length">160 karakter</span>
+                  </div>
+                </div>
+                
+                <div class="template-actions">
+                  <button class="btn-generate" onclick="useTemplate(1)">
+                    <i class="fa-solid fa-edit"></i> Gunakan
+                  </button>
+                  <button class="btn-generate" style="background: #6b7280;" onclick="editTemplate(1)">
+                    <i class="fa-solid fa-cog"></i> Edit
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Template 2 -->
+              <div class="template-card">
+                <div class="template-header">
+                  <h4 style="color: #1a1a1a; margin: 0; font-size: 1rem;">
+                    <i class="fa-solid fa-water" style="color: #3b82f6;"></i> Info PDAM
+                  </h4>
+                  <div class="template-category" style="background: #dbeafe; color: #1e40af; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem;">
+                    PDAM
+                  </div>
+                </div>
+                
+                <div class="template-content">
+                  <div class="template-text">
+                    💧 Info penting: Jadwal pemeliharaan pipa air tanggal 12-13 Feb. Mohon simpan air. #InfoPDAM
+                  </div>
+                  <div class="template-meta">
+                    <span class="template-tag">Informasi</span>
+                    <span class="template-length">120 karakter</span>
+                  </div>
+                </div>
+                
+                <div class="template-actions">
+                  <button class="btn-generate" onclick="useTemplate(2)">
+                    <i class="fa-solid fa-edit"></i> Gunakan
+                  </button>
+                  <button class="btn-generate" style="background: #6b7280;" onclick="editTemplate(2)">
+                    <i class="fa-solid fa-cog"></i> Edit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Action Buttons -->
+          <div style="text-align: center; margin-top: 30px;">
+            <button class="btn-generate" style="background: #10b981; margin-right: 10px;" onclick="exportReport()">
+              <i class="fa-solid fa-download"></i> Export Laporan
+            </button>
+            <button class="btn-generate" style="background: #6366f1;" onclick="syncAccounts()">
+              <i class="fa-solid fa-sync"></i> Sync Akun
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/social-media.js"></script>
+  </body>
+</html>
