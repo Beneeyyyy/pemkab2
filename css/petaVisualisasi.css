@@ -42,11 +42,28 @@
     z-index: 10;
 }
 
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+.legend-item .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
 /* Canvas Peta */
 #map-canvas {
     width: 100%;
     height: 100%;
     position: relative;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
 .district-text {
@@ -77,6 +94,11 @@
     font-size: 10px;
 }
 
+.marker:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 /* Efek Heatmap yang benar */
 .heatmap-active .marker::before {
     content: '';
@@ -100,6 +122,14 @@
     }
 }
 
+/* Glass Effect */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(231, 235, 240, 0.8);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
 /* Sidebar Styling */
 .map-sidebar-list {
     display: flex;
@@ -111,6 +141,24 @@
 #side-issue-render {
     flex-grow: 1;
     overflow-y: auto;
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 3px;
 }
 
 /* Statistik Bawah */
@@ -134,11 +182,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(231, 235, 240, 0.8);
     border-radius: 14px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     margin-bottom: 20px;
 }
 
@@ -239,9 +283,55 @@
 }
 
 input:checked + .ios-slider {
-    background-color: #0f172a; /* Warna gelap sesuai gambar */
+    background-color: #0f172a;
 }
 
 input:checked + .ios-slider:before {
     transform: translateX(22px);
+}
+
+/* District Stat Container */
+.district-stat-container {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Content */
+.header-content {
+    margin-bottom: 20px;
+}
+
+.text-muted {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .map-grid-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .filter-action-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .filter-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .custom-select-wrapper {
+        width: 100%;
+    }
+    
+    #district-stat-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

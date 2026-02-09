@@ -1,0 +1,109 @@
+/* Issue Management Layout */
+.issue-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.issue-mini-card {
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+/* Filter Tab Styling */
+.filter-tab-container {
+    background: #f1f5f9;
+    padding: 6px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+.tab-btn {
+    padding: 8px 32px;
+    border: none;
+    background: transparent;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    background: white;
+    color: var(--text-main);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Issue Card Styling */
+.issue-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.badge-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.custom-badge {
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+}
+
+.badge-status {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* On Progress */
+.badge-priority {
+    background: #ffedd5;
+    color: #9a3412;
+}
+
+/* High/Critical */
+
+/* Category Summary */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.cat-card {
+    padding: 16px;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+    background: white;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-card strong {
+    font-size: 1.4rem;
+    margin-top: 8px;
+}
+
+.cat-jalan {
+    border-left: 4px solid #3b82f6;
+    background: #eff6ff;
+}
+
+.cat-kesehatan {
+    border-left: 4px solid #22c55e;
+    background: #f0fdf4;
+}
