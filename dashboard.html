@@ -173,6 +173,11 @@
           <i class="fa-solid fa-file-pdf"></i>
           <span>Executive Reports</span>
         </div>
+        
+        <div class="nav-item" onclick="window.location.href='assignment.html'">
+          <i class="fa-solid fa-user-tie"></i>
+          <span>Assignment Dinas</span>
+        </div>
       </nav>
       
       <nav id="pic-nav" style="display: none;">
@@ -356,7 +361,7 @@
                 Regional Heatmap
               </h3>
               <div
-                id="map"
+                id="dashboardMap"
                 style="
                   width: 100%;
                   height: 100%;
@@ -1548,6 +1553,260 @@
     </main>
 
     <script src="js/script.js"></script>
+    <script>
+      // Basic dashboard functions (backup untuk script.js yang bermasalah)
+      
+      // Global variables (sudah ada di script.js, tidak perlu deklarasi ulang)
+      let currentView = 'dashboard';
+      // let escalationHistory = []; // Sudah ada di script.js
+      // let activeEscalations = []; // Sudah ada di script.js
+      
+      // Switch view function
+      function switchView(viewId) {
+        // Hide all sections
+        document.querySelectorAll('.view-section').forEach(section => {
+          section.classList.remove('active');
+        });
+        
+        // Remove active class from all nav items
+        document.querySelectorAll('.nav-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        // Show selected section
+        const targetSection = document.getElementById(viewId);
+        if (targetSection) {
+          targetSection.classList.add('active');
+        }
+        
+        // Add active class to clicked nav item
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+          if (item.onclick && item.onclick.toString().includes(viewId)) {
+            item.classList.add('active');
+          }
+        });
+        
+        // Update page title
+        const titles = {
+          dashboard: "Situation Room",
+          warning: "Early Warning",
+          issues: "Manajemen Isu",
+          optimizer: "Public Comm. AI",
+          accounts: "KOL & Influencer Management",
+          reports: "Executive Reports",
+          inbox: "Pesan Masuk"
+        };
+        document.getElementById("page-title").innerText = titles[viewId] || "Command Center";
+        
+        currentView = viewId;
+        
+        // Initialize specific view components
+        if (viewId === "warning") {
+          setTimeout(() => initViralDetection(), 100);
+        }
+        
+        if (viewId === "dashboard") {
+          setTimeout(() => initDashboardMap(), 100);
+        }
+        
+        if (viewId === "issues") {
+          setTimeout(() => {
+            if (typeof renderIssueList === 'function') {
+              renderIssueList();
+            }
+          }, 100);
+        }
+      }
+      
+      // Initialize dashboard map
+      function initDashboardMap() {
+        const mapContainer = document.getElementById('dashboardMap');
+        if (mapContainer && !window.dashboardMapInstance) {
+          try {
+            // Create Leaflet map for dashboard
+            window.dashboardMapInstance = L.map('dashboardMap').setView([-7.7156, 110.3556], 11);
+            
+            // Add tile layer
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+              attribution: '&copy; OpenStreetMap contributors',
+              subdomains: 'abcd',
+              maxZoom: 19
+            }).addTo(window.dashboardMapInstance);
+            
+            // Add sample heatmap points
+            const heatmapPoints = [
+              {lat: -7.7828, lng: 110.3789, intensity: 0.8},
+              {lat: -7.7956, lng: 110.3695, intensity: 0.6},
+              {lat: -7.8156, lng: 110.3595, intensity: 0.4},
+              {lat: -7.7456, lng: 110.3795, intensity: 0.7},
+              {lat: -7.7556, lng: 110.3895, intensity: 0.5}
+            ];
+            
+            // Add heatmap circles
+            heatmapPoints.forEach(point => {
+              L.circle([point.lat, point.lng], {
+                radius: 2000 * point.intensity,
+                fillColor: point.intensity > 0.6 ? '#ef4444' : point.intensity > 0.4 ? '#f59e0b' : '#3b82f6',
+                color: '#fff',
+                weight: 2,
+                opacity: 0.8,
+                fillOpacity: 0.4
+              }).addTo(window.dashboardMapInstance);
+            });
+            
+            console.log('Dashboard map initialized successfully');
+          } catch (error) {
+            console.error('Error initializing dashboard map:', error);
+          }
+        }
+      }
+      
+      // Initialize viral detection
+      function initViralDetection() {
+        console.log('Viral detection initialized');
+        // Add viral detection initialization here
+      }
+      
+      // Update current date
+      function updateCurrentDate() {
+        const now = new Date();
+        const options = { 
+          weekday: 'long', 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        };
+        const dateString = now.toLocaleDateString('id-ID', options);
+        const dateElement = document.getElementById('current-date');
+        if (dateElement) {
+          dateElement.textContent = dateString;
+        }
+      }
+      
+      // Initialize on DOM load
+      document.addEventListener('DOMContentLoaded', function() {
+        updateCurrentDate();
+        setInterval(updateCurrentDate, 60000); // Update every minute
+        
+        // Initialize dashboard components
+        initializeDashboard();
+        
+        // Auto-initialize dashboard map if dashboard is active
+        if (document.getElementById('dashboard').classList.contains('active')) {
+          setTimeout(() => {
+            initDashboardMap();
+          }, 100);
+        }
+      });
+      
+      // Initialize dashboard components
+      function initializeDashboard() {
+        // Initialize main chart
+        initializeMainChart();
+        
+        // Initialize live stream
+        initializeLiveStream();
+        
+        // Initialize stats
+        updateDashboardStats();
+      }
+      
+      // Initialize main chart
+      function initializeMainChart() {
+        const ctx = document.getElementById('mainChart');
+        if (ctx && typeof Chart !== 'undefined') {
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
+              datasets: [{
+                label: 'Positif',
+                data: [120, 135, 125, 145, 160, 155, 140],
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                tension: 0.4
+              }, {
+                label: 'Negatif',
+                data: [80, 95, 110, 125, 115, 105, 90],
+                borderColor: '#ef4444',
+                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                tension: 0.4
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: false
+                }
+              },
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        }
+      }
+      
+      // Initialize live stream
+      function initializeLiveStream() {
+        const streamList = document.getElementById('streamList');
+        if (streamList) {
+          const mockStreams = [
+            {
+              platform: 'Twitter',
+              user: '@warga_sleman',
+              content: 'Terima kasih Pak Bupati atas perhatian terhadap infrastruktur jalan di wilayah kami',
+              sentiment: 'positive',
+              time: '2 menit lalu'
+            },
+            {
+              platform: 'TikTok',
+              user: '@pengunjung_kaliurang',
+              content: 'Video viral tentang kemacetan di Kaliurang, perlu ada solusi segera',
+              sentiment: 'negative',
+              time: '5 menit lalu'
+            },
+            {
+              platform: 'Instagram',
+              user: '@komunitas_sleman',
+              content: 'Acara bersih-bersih sungai berjalan lancar, masyarakat antusias',
+              sentiment: 'positive',
+              time: '8 menit lalu'
+            }
+          ];
+          
+          streamList.innerHTML = mockStreams.map(stream => `
+            <div class="stream-item ${stream.sentiment}">
+              <div class="stream-header">
+                <span>${stream.platform} • ${stream.user}</span>
+                <span>${stream.time}</span>
+              </div>
+              <div class="stream-content">${stream.content}</div>
+            </div>
+          `).join('');
+        }
+      }
+      
+      // Update dashboard stats
+      function updateDashboardStats() {
+        // Simulate real-time updates
+        setInterval(() => {
+          const mentions = document.querySelector('.stat-value');
+          if (mentions && Math.random() > 0.7) {
+            const currentValue = parseInt(mentions.textContent.replace(',', ''));
+            const newValue = currentValue + Math.floor(Math.random() * 10);
+            mentions.textContent = newValue.toLocaleString();
+          }
+        }, 5000);
+      }
+    </script>
     <script>
       // Mapping pesan ke pilihan masalah
       const messageToProblemMap = {
