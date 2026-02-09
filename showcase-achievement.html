@@ -1,0 +1,1728 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleman Smart Regency - Showcase Achievement</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/showcase-achievement.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" href="assets/logo.jpg" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <!-- Sidebar -->
+<aside>
+      <nav class="sidebar">
+        <div class="nav-header">
+          <div class="logo">
+            <img src="assets/logo.jpg" alt="Pemkab Sleman Logo" />
+            <div>
+              <h2>Pemkab Sleman</h2>
+              <span>Command Center</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="nav-items">
+          <div class="nav-item" onclick="window.location.href='dashboard.html'">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='dashboard.html#warning'">
+            <i class="fa-solid fa-exclamation-triangle"></i>
+            <span>Early Warning</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='dashboard.html#issues'">
+            <i class="fa-solid fa-tasks"></i>
+            <span>Manajemen Isu</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='dashboard.html#optimizer'">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Public Comm. AI</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='dashboard.html#reports'">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Executive Reports</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='assignment.html'">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>Assignment Dinas</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='petavisual.html'">
+            <i class="fa-solid fa-map"></i>
+            <span>Peta Visualisasi</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='social-media.html'">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span>Social Media Management</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='leaderboard-dinas.html'">
+            <i class="fa-solid fa-trophy"></i>
+            <span>Leaderboard Dinas</span>
+          </div>
+          
+          <div class="nav-item active" onclick="window.location.href='showcase-achievement.html'">
+            <i class="fa-solid fa-award"></i>
+            <span>Showcase Achievement</span>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <header>
+        <div class="date-display" id="current-date">Loading...</div>
+        
+        <div class="ticker-wrap">
+          <div class="ticker">
+            <span> 🏆 SHOWCASE ACHIEVEMENT • AUTO-GENERATE KONTEN • REAL-TIME ANALYTICS</span>
+          </div>
+        </div>
+
+        <div class="user-profile">
+          <div class="avatar">SA</div>
+          <span>Showcase Admin</span>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Page Header -->
+        <div class="page-header">
+          <div class="page-title">
+            <h1>🏆 Showcase Achievement</h1>
+            <p>Auto-generate konten "Before-After" dan counter-narrative untuk setiap dinas</p>
+          </div>
+        </div>
+        
+        <!-- Overview Statistics -->
+        <div class="stats-overview">
+          <div class="stat-card">
+            <div class="stat-icon" style="background: #dbeafe; color: #1e40af;">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value">12</div>
+              <div class="stat-label">Total Achievement</div>
+              <div class="stat-trend positive">Tercapai</div>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon" style="background: #dcfce7; color: #166534;">
+              <i class="fa-solid fa-file-alt"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value">48</div>
+              <div class="stat-label">Konten Dibuat</div>
+              <div class="stat-trend positive">+15% bulan ini</div>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon" style="background: #fef3c7; color: #92400e;">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value">87.5%</div>
+              <div class="stat-label">Engagement Rate</div>
+              <div class="stat-trend positive">+5.2% naik</div>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon" style="background: #ede9fe; color: #6d28d9;">
+              <i class="fa-solid fa-share-nodes"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value">5</div>
+              <div class="stat-label">Platform Terhubung</div>
+              <div class="stat-trend neutral">Semua aktif</div>
+            </div>
+          </div>
+        </div>
+        
+
+        
+        <!-- Bottom Section -->
+        <div class="bottom-section">
+          <!-- Achievement Gallery -->
+          <div class="content-card full-width">
+            <div class="card-header">
+              <h3>🏆 Achievement Gallery</h3>
+              <p>Galeri prestasi dan penghargaan Pemkab Sleman</p>
+            </div>
+            <div class="achievement-gallery-grid" id="achievement-gallery">
+              <!-- Achievement items will be rendered by JavaScript -->
+            </div>
+          </div>
+          
+          <!-- Content Impact Analysis -->
+          <div class="content-card full-width">
+            <div class="card-header">
+              <h3>🎯 Content Impact Analysis</h3>
+              <p>Analisis manfaat dan dampak konten achievement yang telah dibuat</p>
+            </div>
+            <div class="impact-cards">
+              <div class="impact-card">
+                <div class="impact-icon" style="background: #dcfce7; color: #166534;">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="impact-content">
+                  <h4>Reach Masyarakat</h4>
+                  <div class="impact-value">45.2K</div>
+                  <div class="impact-change positive">+12.5%</div>
+                  <p>Jumlah orang melihat konten achievement</p>
+                </div>
+              </div>
+              
+              <div class="impact-card">
+                <div class="impact-icon" style="background: #dbeafe; color: #1e40af;">
+                  <i class="fa-solid fa-thumbs-up"></i>
+                </div>
+                <div class="impact-content">
+                  <h4>Sentimen Positif</h4>
+                  <div class="impact-value">87.3%</div>
+                  <div class="impact-change positive">+5.2%</div>
+                  <p>Respon positif masyarakat terhadap achievement</p>
+                </div>
+              </div>
+              
+              <div class="impact-card">
+                <div class="impact-icon" style="background: #fef3c7; color: #92400e;">
+                  <i class="fa-solid fa-share"></i>
+                </div>
+                <div class="impact-content">
+                  <h4>Viral Rate</h4>
+                  <div class="impact-value">3.8x</div>
+                  <div class="impact-change positive">+0.8x</div>
+                  <p>Kekuatan viral konten achievement</p>
+                </div>
+              </div>
+            </div>
+            <div class="impact-table" id="impact-table">
+              <!-- Table will be rendered by JavaScript -->
+            </div>
+          </div>
+          
+          <!-- Platform Distribution -->
+          <div class="content-card full-width">
+            <div class="card-header">
+              <h3>📱 Platform Distribution</h3>
+              <p>Distribusi konten ke berbagai platform media sosial</p>
+            </div>
+            <div class="platform-grid" id="platform-grid">
+              <!-- Content will be rendered by JavaScript -->
+            </div>
+          </div>
+          
+          <!-- Analytics Dashboard -->
+          <div class="content-card full-width">
+            <div class="card-header">
+              <h3>� Analytics Dashboard</h3>
+              <p>Analisis performa konten achievement</p>
+            </div>
+            <div class="charts-grid">
+              <div class="chart-card">
+                <h4>📊 Achievement Trend</h4>
+                <div class="chart-container">
+                  <canvas id="achievementChart"></canvas>
+                </div>
+              </div>
+              <div class="chart-card">
+                <h4>🎯 Platform Performance</h4>
+                <div class="chart-container">
+                  <canvas id="platformChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="action-bar">
+          <button class="btn-success" onclick="exportReport()">
+            <i class="fa-solid fa-download"></i> Export Laporan
+          </button>
+          <button class="btn-primary" onclick="syncData()">
+            <i class="fa-solid fa-sync"></i> Sync Data
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+      // Update current date
+      function updateCurrentDate() {
+        const now = new Date();
+        const options = { 
+          weekday: 'long', 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        };
+        const dateString = now.toLocaleDateString('id-ID', options);
+        const dateElement = document.getElementById('current-date');
+        if (dateElement) {
+          dateElement.textContent = dateString;
+        }
+      }
+      
+      // WhatsApp contacts data
+      const whatsappContacts = {
+        masyarakat: [
+          { name: "Komunitas Sleman", phone: "628123456001", group: "Masyarakat Umum" },
+          { name: "Karang Taruna", phone: "628123456002", group: "Pemuda" },
+          { name: "Ibu-ibu PKK", phone: "628123456003", group: "Wanita" },
+          { name: "Lansia Sehat", phone: "628123456004", group: "Lansia" }
+        ],
+        opd: [
+          { name: "Sekretariat Daerah", phone: "628123456005", group: "OPD" },
+          { name: "Dinas Kesehatan", phone: "628123456006", group: "OPD" },
+          { name: "Dinas PUPR", phone: "628123456007", group: "OPD" },
+          { name: "Dinas Kominfo", phone: "628123456008", group: "OPD" }
+        ],
+        media: [
+          { name: "Kompas DIY", phone: "628123456009", group: "Media" },
+          { name: "Kedaulatan Rakyat", phone: "628123456010", group: "Media" },
+          { name: "Radio GCD", phone: "628123456011", group: "Media" },
+          { name: "TVRI Yogyakarta", phone: "628123456012", group: "Media" }
+        ],
+        stakeholder: [
+          { name: "DPRD Sleman", phone: "628123456013", group: "Stakeholder" },
+          { name: "Universitas Gadjah Mada", phone: "628123456014", group: "Pendidikan" },
+          { name: "Bank BPD DIY", phone: "628123456015", group: "Swasta" },
+          { name: "PHRI Sleman", phone: "628123456016", group: "Swasta" }
+        ]
+      };
+      
+      // Content impact data
+      const contentImpactData = [
+        {
+          id: "kabupaten-terinovatif",
+          title: "Kabupaten Terinovatif 2024",
+          reach: 12500,
+          engagement: 89.5,
+          shares: 2340,
+          comments: 890,
+          sentiment: 92.3,
+          viralRate: 4.2,
+          date: "2024-03-15",
+          impact: "Peningkatan citra daerah secara nasional"
+        },
+        {
+          id: "kepuasan-masyarakat",
+          title: "Indeks Kepuasan Tertinggi",
+          reach: 8900,
+          engagement: 87.3,
+          shares: 1560,
+          comments: 670,
+          sentiment: 88.7,
+          viralRate: 3.8,
+          date: "2024-02-28",
+          impact: "Kepercayaan masyarakat meningkat"
+        },
+        {
+          id: "digital-transformation",
+          title: "Digital Transformation Award",
+          reach: 15200,
+          engagement: 91.2,
+          shares: 3120,
+          comments: 1150,
+          sentiment: 94.1,
+          viralRate: 5.1,
+          date: "2024-01-20",
+          impact: "Top 10 Asia Tenggara"
+        },
+        {
+          id: "sistem-keamanan",
+          title: "Sistem Keamanan Siber Terbaik",
+          reach: 7800,
+          engagement: 85.6,
+          shares: 980,
+          comments: 420,
+          sentiment: 86.9,
+          viralRate: 2.9,
+          date: "2023-12-10",
+          impact: "Zero security incidents"
+        }
+      ];
+      
+      // Engagement tracking data
+      const engagementData = {
+        daily: [
+          { date: '2024-03-10', reach: 1200, engagement: 85, shares: 230, comments: 89 },
+          { date: '2024-03-11', reach: 1450, engagement: 87, shares: 280, comments: 102 },
+          { date: '2024-03-12', reach: 1680, engagement: 89, shares: 320, comments: 125 },
+          { date: '2024-03-13', reach: 1890, engagement: 91, shares: 380, comments: 148 },
+          { date: '2024-03-14', reach: 2100, engagement: 93, shares: 450, comments: 178 },
+          { date: '2024-03-15', reach: 2350, engagement: 95, shares: 520, comments: 201 }
+        ],
+        trends: [
+          { metric: 'Reach', current: 2350, previous: 1890, change: 24.3, status: 'up' },
+          { metric: 'Engagement Rate', current: 95, previous: 87, change: 9.2, status: 'up' },
+          { metric: 'Shares', current: 520, previous: 380, change: 36.8, status: 'up' },
+          { metric: 'Comments', current: 201, previous: 148, change: 35.8, status: 'up' },
+          { metric: 'Sentiment', current: 92.3, previous: 88.7, change: 4.1, status: 'up' }
+        ]
+      };
+      
+      // Achievement gallery data
+      const achievementGalleryData = [
+        {
+          id: "listrik_padam_cepat",
+          title: "Listrik Padam Selesai 30 Menit",
+          category: "Infrastructure",
+          date: "2024-03-15",
+          image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=250&fit=crop&auto=format",
+          description: "Pemulihan listrik padam di seluruh Sleman dalam waktu kurang dari 30 menit",
+          impact: "Kenyamanan masyarakat meningkat, aktivitas ekonomi tidak terganggu"
+        },
+        {
+          id: "air_bersih_lancar",
+          title: "Air Bersih 100% Terlayani",
+          category: "Public Service",
+          date: "2024-02-28",
+          image: "https://images.unsplash.com/photo-1548191250-1ee94c7e52a4?w=400&h=250&fit=crop&auto=format",
+          description: "Seluruh desa di Kabupaten Sleman terlayani air bersih dengan kualitas standar WHO",
+          impact: "Kesehatan masyarakat meningkat, kualitas hidup lebih baik"
+        },
+        {
+          id: "jalan_rusak_diperbaiki",
+          title: "Jalan Rusak 0% Tersisa",
+          category: "Infrastructure",
+          date: "2024-01-20",
+          image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=250&fit=crop&auto=format",
+          description: "Seluruh jalan rusak di Sleman diperbaiki dalam 6 bulan, zero tolerance jalan berlubang",
+          impact: "Keselamatan pengendara meningkat, aksesibilitas lebih baik"
+        },
+        {
+          id: "sampah_zero_waste",
+          title: "Zero Waste Program Berhasil",
+          category: "Environment",
+          date: "2023-12-10",
+          image: "https://images.unsplash.com/photo-1532996122727-e3c354cc0907?w=400&h=250&fit=crop&auto=format",
+          description: "Reduksi sampah 85% melalui program pengelolaan sampah terpadu di 15 kecamatan",
+          impact: "Lingkungan bersih, kesehatan masyarakat terjaga"
+        },
+        {
+          id: "internet_desa_terhubung",
+          title: "Internet Desa 100% Terhubung",
+          category: "Digital",
+          date: "2023-11-15",
+          image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop&auto=format",
+          description: "Seluruh desa di Sleman terhubung dengan internet fiber optic 4G",
+          impact: "Digitalisasi desa, akses informasi dan edukasi merata"
+        }
+      ];
+      
+      // UNIFIED ACHIEVEMENT DATASET - Single source of truth untuk semua fitur
+      const unifiedAchievementData = {
+        achievements: [
+          {
+            id: "listrik_padam_cepat",
+            title: "Listrik Padam Selesai 30 Menit",
+            description: "Pemulihan listrik padam di seluruh Sleman dalam waktu kurang dari 30 menit setelah laporan",
+            icon: "⚡",
+            value: 98,
+            unlocked: true,
+            category: "Infrastructure",
+            date: "2024-03-15",
+            contentTemplates: {
+              before: "Sebelum achievement: Listrik padam rata-rata 3.5 jam",
+              after: "Setelah achievement: Listrik padam rata-rata 25 menit",
+              impact: "Peningkatan 88% kecepatan pemulihan listrik"
+            },
+            analytics: {
+              reach: 18500,
+              engagement: 92.3,
+              shares: 3240,
+              comments: 1120,
+              sentiment: 94.5,
+              viralRate: 5.2
+            },
+            impact: "Kenyamanan masyarakat meningkat, aktivitas ekonomi tidak terganggu"
+          },
+          {
+            id: "air_bersih_lancar",
+            title: "Air Bersih 100% Terlayani",
+            description: "Seluruh desa di Kabupaten Sleman terlayani air bersih dengan kualitas standar WHO",
+            icon: "💧",
+            value: 100,
+            unlocked: true,
+            category: "Public Service",
+            date: "2024-02-28",
+            contentTemplates: {
+              before: "Sebelum achievement: 78% desa terlayani air bersih",
+              after: "Setelah achievement: 100% desa terlayani air bersih",
+              impact: "Peningkatan 28% cakupan air bersih"
+            },
+            analytics: {
+              reach: 12400,
+              engagement: 88.7,
+              shares: 2180,
+              comments: 890,
+              sentiment: 91.2,
+              viralRate: 4.1
+            },
+            impact: "Kesehatan masyarakat meningkat, kualitas hidup lebih baik"
+          },
+          {
+            id: "jalan_rusak_diperbaiki",
+            title: "Jalan Rusak 0% Tersisa",
+            description: "Seluruh jalan rusak di Sleman diperbaiki dalam 6 bulan, zero tolerance jalan berlubang",
+            icon: "🛣️",
+            value: 100,
+            unlocked: true,
+            category: "Infrastructure",
+            date: "2024-01-20",
+            contentTemplates: {
+              before: "Sebelum achievement: 45 km jalan rusak tersisa",
+              after: "Setelah achievement: 0 km jalan rusak tersisa",
+              impact: "Peningkatan 100% penyelesaian jalan rusak"
+            },
+            analytics: {
+              reach: 15600,
+              engagement: 90.5,
+              shares: 2890,
+              comments: 1340,
+              sentiment: 93.8,
+              viralRate: 4.8
+            },
+            impact: "Keselamatan pengendara meningkat, aksesibilitas lebih baik"
+          },
+          {
+            id: "sampah_zero_waste",
+            title: "Zero Waste Program Berhasil",
+            description: "Reduksi sampah 85% melalui program pengelolaan sampah terpadu di 15 kecamatan",
+            icon: "♻️",
+            value: 85,
+            unlocked: true,
+            category: "Environment",
+            date: "2023-12-10",
+            contentTemplates: {
+              before: "Sebelum achievement: Produksi sampah 120 ton/hari",
+              after: "Setelah achievement: Produksi sampah 18 ton/hari",
+              impact: "Reduksi sampah 85% dari target"
+            },
+            analytics: {
+              reach: 9800,
+              engagement: 86.9,
+              shares: 1560,
+              comments: 670,
+              sentiment: 89.3,
+              viralRate: 3.6
+            },
+            impact: "Lingkungan bersih, kesehatan masyarakat terjaga"
+          },
+          {
+            id: "internet_desa_terhubung",
+            title: "Internet Desa 100% Terhubung",
+            description: "Seluruh desa di Sleman terhubung dengan internet fiber optic 4G",
+            icon: "�",
+            value: 100,
+            unlocked: true,
+            category: "Digital",
+            date: "2023-11-15",
+            contentTemplates: {
+              before: "Sebelum achievement: 65% desa terhubung internet",
+              after: "Setelah achievement: 100% desa terhubung internet",
+              impact: "Peningkatan 54% cakupan internet desa"
+            },
+            analytics: {
+              reach: 11200,
+              engagement: 89.2,
+              shares: 1980,
+              comments: 780,
+              sentiment: 90.7,
+              viralRate: 4.3
+            },
+            impact: "Digitalisasi desa, akses informasi dan edukasi merata"
+          }
+        ]
+      };
+
+      // CONTENT STATE MANAGEMENT - Central state untuk semua operasi konten
+      const contentState = {
+        currentAchievement: null,
+        generatedContent: null,
+        editingMode: false,
+        draftId: null,
+        publicationHistory: JSON.parse(localStorage.getItem('publicationHistory') || '[]'),
+        drafts: JSON.parse(localStorage.getItem('contentDrafts') || '[]')
+      };
+      
+      // Platform data
+      const platformData = {
+        facebook: { posts: 245, engagement: 4500, reach: 12000, growth: 12.5 },
+        instagram: { posts: 189, engagement: 3200, reach: 8500, growth: 18.2 },
+        twitter: { posts: 156, engagement: 2800, reach: 9800, growth: 15.3 },
+        tiktok: { posts: 98, engagement: 5100, reach: 6500, growth: 22.1 },
+        youtube: { posts: 67, engagement: 1200, reach: 3200, growth: 8.7 }
+      };
+      
+      // UNIFIED CONTENT WORKFLOW FUNCTIONS
+      
+      // Initialize wizard
+      let currentStep = 1;
+      
+      function initializeWizard() {
+        renderAchievementSelection();
+        setupEventListeners();
+      }
+      
+      // Render achievement selection
+      function renderAchievementSelection() {
+        const selectionGrid = document.getElementById('achievement-selection');
+        if (selectionGrid) {
+          selectionGrid.innerHTML = unifiedAchievementData.achievements.map(achievement => `
+            <div class="achievement-selection-item" onclick="selectAchievement('${achievement.id}')" data-achievement-id="${achievement.id}">
+              <div class="achievement-selection-header">
+                <div class="achievement-selection-icon">${achievement.icon}</div>
+                <div class="achievement-selection-title">
+                  <h5>${achievement.title}</h5>
+                  <span class="achievement-selection-category">${achievement.category}</span>
+                </div>
+              </div>
+              <div class="achievement-selection-description">${achievement.description}</div>
+              <div class="achievement-selection-stats">
+                <div class="achievement-stat">
+                  <span>�</span>
+                  <span class="achievement-stat-value">${achievement.value}</span>
+                  <span>Score</span>
+                </div>
+                <div class="achievement-stat">
+                  <span>👥</span>
+                  <span class="achievement-stat-value">${achievement.analytics.reach.toLocaleString()}</span>
+                  <span>Reach</span>
+                </div>
+                <div class="achievement-stat">
+                  <span>💬</span>
+                  <span class="achievement-stat-value">${achievement.analytics.engagement}%</span>
+                  <span>Engagement</span>
+                </div>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+      
+      // Select achievement
+      function selectAchievement(achievementId) {
+        // Remove previous selection
+        document.querySelectorAll('.achievement-selection-item').forEach(item => {
+          item.classList.remove('selected');
+        });
+        
+        // Add selection to clicked item
+        const selectedItem = document.querySelector(`[data-achievement-id="${achievementId}"]`);
+        if (selectedItem) {
+          selectedItem.classList.add('selected');
+        }
+        
+        // Update state
+        contentState.currentAchievement = unifiedAchievementData.achievements.find(a => a.id === achievementId);
+        
+        // Enable next button
+        const nextButton = document.getElementById('nextStep1');
+        if (nextButton) {
+          nextButton.disabled = false;
+        }
+      }
+      
+      // Navigation functions
+      function nextStep() {
+        if (currentStep < 4) {
+          hideStep(currentStep);
+          currentStep++;
+          showStep(currentStep);
+        }
+      }
+      
+      function previousStep() {
+        if (currentStep > 1) {
+          hideStep(currentStep);
+          currentStep--;
+          showStep(currentStep);
+        }
+      }
+      
+      function hideStep(stepNumber) {
+        const step = document.getElementById(`step${stepNumber}`);
+        if (step) {
+          step.classList.add('hidden');
+        }
+      }
+      
+      function showStep(stepNumber) {
+        const step = document.getElementById(`step${stepNumber}`);
+        if (step) {
+          step.classList.remove('hidden');
+        }
+      }
+      
+      // Generate unified content
+      function generateUnifiedContent() {
+        if (!contentState.currentAchievement) {
+          showNotification('Silakan pilih achievement terlebih dahulu!', 'warning');
+          return;
+        }
+        
+        const contentType = document.querySelector('input[name="contentType"]:checked')?.value || 'achievement';
+        const platform = document.getElementById('platform-select')?.value || 'all';
+        const tone = document.getElementById('tone-select')?.value || 'formal';
+        
+        // Get custom title and description
+        const customTitle = document.getElementById('custom-title')?.value.trim();
+        const customDescription = document.getElementById('custom-description')?.value.trim();
+        
+        let generatedContent = '';
+        
+        switch (contentType) {
+          case 'achievement':
+            generatedContent = generateAchievementPost(contentState.currentAchievement, platform, tone, customTitle, customDescription);
+            break;
+          case 'narrative':
+            generatedContent = generateNarrativeContent(contentState.currentAchievement, platform, tone, customTitle, customDescription);
+            break;
+          case 'beforeafter':
+            generatedContent = generateBeforeAfterContent(contentState.currentAchievement, platform, tone, customTitle, customDescription);
+            break;
+        }
+        
+        contentState.generatedContent = {
+          type: contentType,
+          platform: platform,
+          tone: tone,
+          content: generatedContent,
+          achievement: contentState.currentAchievement,
+          customTitle: customTitle,
+          customDescription: customDescription,
+          timestamp: new Date().toISOString()
+        };
+        
+        displayGeneratedContent(generatedContent);
+        showNotification('Konten berhasil digenerate!', 'success');
+      }
+      
+      // Generate achievement post
+      function generateAchievementPost(achievement, platform, tone, customTitle, customDescription) {
+        const toneTemplates = {
+          formal: {
+            intro: `Pemerintah Kabupaten Sleman dengan bangga mengumumkan pencapaian`,
+            closing: `Ini adalah wujud komitmen kami untuk memberikan pelayanan terbaik kepada masyarakat.`
+          },
+          casual: {
+            intro: `Wih! Kabupaten Sleman kembali mencetak prestasi`,
+            closing: `Makasih untuk warga Sleman yang sudah support terus!`
+          },
+          inspirational: {
+            intro: `Bersama kita wujudkan Sleman yang lebih baik`,
+            closing: `Mari terus dukung kemajuan Kabupaten Sleman!`
+          },
+          celebration: {
+            intro: `🎉 SELAMAT! Kabupaten Sleman berhasil meraih`,
+            closing: `Perayaan ini untuk semua warga Sleman!`
+          }
+        };
+        
+        const template = toneTemplates[tone] || toneTemplates.formal;
+        
+        // Use custom title and description if provided, otherwise use defaults
+        const title = customTitle || achievement.title;
+        const description = customDescription || achievement.description;
+        
+        return `
+          <div class="content-review-body">
+            <h3>${achievement.icon} ${title}</h3>
+            <p><strong>${template.intro} "${title}"!</strong></p>
+            <p>${description}</p>
+            <div class="achievement-stats">
+              <span class="achievement-badge">📊 Score: ${achievement.value}</span>
+              <span class="achievement-badge">👥 Reach: ${achievement.analytics.reach.toLocaleString()}</span>
+              <span class="achievement-badge">💬 Engagement: ${achievement.analytics.engagement}%</span>
+            </div>
+            <p><strong>Dampak:</strong> ${achievement.impact}</p>
+            <p><strong>${template.closing}</strong></p>
+            <p><strong>#SlemanBersih #SlemanInovatif #Achievement #PemkabSleman</strong></p>
+            
+            <!-- WhatsApp Blasting Button -->
+            <div class="content-action-buttons">
+              <button class="btn-whatsapp-blast" onclick="quickWhatsAppBlast()">
+                <i class="fab fa-whatsapp"></i> WhatsApp Blast
+              </button>
+            </div>
+          </div>
+        `;
+      }
+      
+      // Generate narrative content
+      function generateNarrativeContent(achievement, platform, tone, customTitle, customDescription) {
+        const metrics = {
+          totalIssues: Math.floor(Math.random() * 50) + 20,
+          resolvedIssues: Math.floor(Math.random() * 40) + 15,
+          avgResponseTime: (Math.random() * 2 + 1).toFixed(1),
+          engagementRate: Math.floor(Math.random() * 30) + 70,
+          satisfactionScore: Math.floor(Math.random() * 20) + 80
+        };
+        
+        // Use custom title and description if provided
+        const title = customTitle || achievement.title;
+        const description = customDescription || achievement.description;
+        
+        return `
+          <div class="content-review-body">
+            <h3>📝 Narasi Kinerja: ${title}</h3>
+            <p><strong>${description}</strong></p>
+            <div class="narrative-stats">
+              <div class="stat-item">
+                <span class="stat-label">Total Isu:</span>
+                <span class="stat-value">${metrics.totalIssues}</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Diselesaikan:</span>
+                <span class="stat-value">${metrics.resolvedIssues}</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Respon Rata-rata:</span>
+                <span class="stat-value">${metrics.avgResponseTime} jam</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Engagement Rate:</span>
+                <span class="stat-value">${metrics.engagementRate}%</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Kepuasan:</span>
+                <span class="stat-value">${metrics.satisfactionScore}%</span>
+              </div>
+            </div>
+            <div class="narrative-text">
+              <p><strong>Analisis Kinerja:</strong></p>
+              <p>Berdasarkan achievement "${title}", Pemkab Sleman berhasil menunjukkan peningkatan kinerja yang signifikan. Dari total ${metrics.totalIssues} isu yang masuk, sebanyak ${metrics.resolvedIssues} isu berhasil diselesaikan dengan tingkat kepuasan ${metrics.satisfactionScore}%.</p>
+              <p>Waktu respon rata-rata menurun menjadi ${metrics.avgResponseTime} jam, menunjukkan efisiensi yang lebih baik dalam penanganan isu publik. Engagement rate mencapai ${metrics.engagementRate}%, mengindikasikan adopsi masyarakat terhadap informasi dan layanan yang disediakan.</p>
+              <p><strong>Rekomendasi:</strong></p>
+              <p>1. Pertahankan konsistensi dalam penanganan isu</p>
+              <p>2. Terus tingkatkan kualitas konten dan interaksi dengan masyarakat</p>
+              <p>3. Lakukan evaluasi berkala untuk identifikasi area perbaikan</p>
+            </div>
+            
+            <!-- WhatsApp Blasting Button -->
+            <div class="content-action-buttons">
+              <button class="btn-whatsapp-blast" onclick="quickWhatsAppBlast()">
+                <i class="fab fa-whatsapp"></i> WhatsApp Blast
+              </button>
+            </div>
+          </div>
+        `;
+      }
+      
+      // Generate before-after content
+      function generateBeforeAfterContent(achievement, platform, tone, customTitle, customDescription) {
+        const templates = achievement.contentTemplates;
+        
+        // Use custom title and description if provided
+        const title = customTitle || achievement.title;
+        const description = customDescription || achievement.description;
+        
+        return `
+          <div class="content-review-body">
+            <h3>📊 Before-After Analysis: ${title}</h3>
+            <p><strong>${description}</strong></p>
+            <div class="comparison-cards">
+              <div class="comparison-card before">
+                <h4>📉 Before Achievement</h4>
+                <p><strong>${templates.before}</strong></p>
+                <div class="metrics">
+                  <div class="metric">
+                    <span class="metric-label">Respon Time:</span>
+                    <span class="metric-value poor">4.5 jam</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Engagement:</span>
+                    <span class="metric-value poor">65%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="comparison-card after">
+                <h4>📈 After Achievement</h4>
+                <p><strong>${templates.after}</strong></p>
+                <div class="metrics">
+                  <div class="metric">
+                    <span class="metric-label">Respon Time:</span>
+                    <span class="metric-value excellent">1.8 jam</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Engagement:</span>
+                    <span class="metric-value excellent">85%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p><strong>Impact:</strong> ${templates.impact}</p>
+            <p><strong>Achievement "${title}" ini membuktikan komitmen Pemkab Sleman untuk terus meningkatkan kualitas pelayanan publik secara berkelanjutan.</strong></p>
+            
+            <!-- WhatsApp Blasting Button -->
+            <div class="content-action-buttons">
+              <button class="btn-whatsapp-blast" onclick="quickWhatsAppBlast()">
+                <i class="fab fa-whatsapp"></i> WhatsApp Blast
+              </button>
+            </div>
+          </div>
+        `;
+      }
+      
+      // Display generated content
+      function displayGeneratedContent(content) {
+        const reviewArea = document.getElementById('content-review');
+        if (reviewArea) {
+          reviewArea.innerHTML = content;
+        }
+      }
+      
+      // Proceed to publish
+      function proceedToPublish() {
+        if (!contentState.generatedContent) {
+          showNotification('Silakan generate konten terlebih dahulu!', 'warning');
+          return;
+        }
+        nextStep();
+      }
+      
+      // Save draft
+      function saveDraft() {
+        if (!contentState.generatedContent) {
+          showNotification('Tidak ada konten untuk disimpan!', 'warning');
+          return;
+        }
+        
+        const draft = {
+          id: Date.now(),
+          ...contentState.generatedContent,
+          savedAt: new Date().toISOString()
+        };
+        
+        contentState.drafts.push(draft);
+        localStorage.setItem('contentDrafts', JSON.stringify(contentState.drafts));
+        
+        showNotification('Draft berhasil disimpan!', 'success');
+      }
+      
+      // Regenerate content
+      function regenerateContent() {
+        generateUnifiedContent();
+      }
+      
+      // Setup event listeners
+      function setupEventListeners() {
+        // Schedule option change
+        const scheduleOption = document.getElementById('schedule-option');
+        const scheduleDatetime = document.getElementById('schedule-datetime');
+        
+        if (scheduleOption && scheduleDatetime) {
+          scheduleOption.addEventListener('change', function() {
+            if (this.value === 'schedule') {
+              scheduleDatetime.style.display = 'block';
+            } else {
+              scheduleDatetime.style.display = 'none';
+            }
+          });
+        }
+        
+        // Character counters for custom title and description
+        const customTitle = document.getElementById('custom-title');
+        const customDescription = document.getElementById('custom-description');
+        const titleCounter = document.getElementById('title-counter');
+        const descCounter = document.getElementById('desc-counter');
+        
+        if (customTitle && titleCounter) {
+          customTitle.addEventListener('input', function() {
+            titleCounter.textContent = this.value.length;
+          });
+        }
+        
+        if (customDescription && descCounter) {
+          customDescription.addEventListener('input', function() {
+            descCounter.textContent = this.value.length;
+          });
+        }
+      }
+      
+      // Enhanced publish function
+      function publishContent() {
+        if (!contentState.generatedContent) {
+          showNotification('Tidak ada konten untuk dipublish!', 'warning');
+          return;
+        }
+        
+        const selectedPlatforms = Array.from(document.querySelectorAll('.platform-item input:checked')).map(cb => cb.value);
+        const scheduleOption = document.getElementById('schedule-option')?.value || 'now';
+        const scheduleDatetime = document.getElementById('publish-datetime')?.value;
+        const targetAudiences = Array.from(document.querySelectorAll('.checkbox-item input:checked')).map(cb => cb.value);
+        
+        if (selectedPlatforms.length === 0) {
+          showNotification('Silakan pilih minimal satu platform!', 'warning');
+          return;
+        }
+        
+        const publication = {
+          id: Date.now(),
+          content: contentState.generatedContent,
+          platforms: selectedPlatforms,
+          scheduleOption,
+          scheduleDatetime,
+          targetAudiences,
+          publishedAt: scheduleOption === 'now' ? new Date().toISOString() : null,
+          status: scheduleOption === 'now' ? 'published' : 'scheduled'
+        };
+        
+        // Add to publication history
+        contentState.publicationHistory.push(publication);
+        localStorage.setItem('publicationHistory', JSON.stringify(contentState.publicationHistory));
+        
+        // Simulate platform publishing
+        selectedPlatforms.forEach(platform => {
+          setTimeout(() => {
+            showNotification(`✅ Konten berhasil dipublish ke ${platform}!`, 'success');
+          }, 1000);
+        });
+        
+        // If WhatsApp is selected, send blast
+        if (selectedPlatforms.includes('whatsapp') && targetAudiences.length > 0) {
+          sendWhatsAppBlastForContent(contentState.generatedContent, targetAudiences);
+        }
+        
+        showNotification(`🚀 Konten berhasil dipublish ke ${selectedPlatforms.length} platform!`, 'success');
+        
+        // Reset wizard
+        setTimeout(() => {
+          resetWizard();
+        }, 2000);
+      }
+      
+      // WhatsApp blast for generated content
+      function sendWhatsAppBlastForContent(content, audiences) {
+        const message = generateWhatsAppMessageFromContent(content);
+        
+        audiences.forEach(audience => {
+          const contacts = whatsappContacts[audience] || [];
+          contacts.forEach(contact => {
+            const whatsappUrl = `https://wa.me/${contact.phone}?text=${encodeURIComponent(message)}`;
+            console.log(`Sending to ${contact.name}: ${whatsappUrl}`);
+          });
+        });
+        
+        showNotification(`📱 WhatsApp blast terkirim ke ${audiences.length} audience`, 'success');
+      }
+      
+      // Generate WhatsApp message from content
+      function generateWhatsAppMessageFromContent(content) {
+        const achievement = content.achievement;
+        return `🏆 *${achievement.title}*
+
+📅 ${formatDate(achievement.date)}
+📝 ${achievement.description}
+
+💡 *Dampak:*
+${content.impact}
+
+📊 *Achievement Stats:*
+• Score: ${achievement.value}
+• Reach: ${achievement.analytics.reach.toLocaleString()}
+• Engagement: ${achievement.analytics.engagement}%
+• Viral Rate: ${achievement.analytics.viralRate}x
+
+🔗 Informasi lengkap: https://pemkab-sleman.go.id/achievement/${achievement.id}
+
+---
+📢 *Pemerintah Kabupaten Sleman*
+#SlemanBersih #SlemanInovatif #Achievement`;
+      }
+      
+      // Gallery WhatsApp Blast function
+      function galleryWhatsAppBlast(achievementId, title, description) {
+        // Find achievement data from unified dataset
+        const achievement = unifiedAchievementData.achievements.find(a => a.id === achievementId);
+        
+        if (!achievement) {
+          showNotification('Achievement data tidak ditemukan!', 'warning');
+          return;
+        }
+        
+        // Create content state for gallery item
+        const galleryContentState = {
+          type: 'gallery',
+          achievement: achievement,
+          customTitle: title,
+          customDescription: description,
+          timestamp: new Date().toISOString()
+        };
+        
+        // Show modal for target audience selection
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+          position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(0,0,0,0.5); z-index: 3000;
+          display: flex; align-items: center; justify-content: center;
+        `;
+        
+        modal.innerHTML = `
+          <div style="background: white; padding: 30px; border-radius: 16px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;">
+            <h3 style="margin-bottom: 20px; color: #1a1a1a; display: flex; align-items: center; gap: 10px;">
+              <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.5rem;"></i>
+              WhatsApp Blast - ${title}
+            </h3>
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+              <h4 style="color: #1a1a1a; margin-bottom: 10px;">Konten yang akan dikirim:</h4>
+              <div style="white-space: pre-wrap; line-height: 1.6; color: #374151; font-size: 0.9rem;">
+                ${generateGalleryWhatsAppMessage(achievement, title, description)}
+              </div>
+            </div>
+            <div style="margin-bottom: 20px;">
+              <h4 style="color: #1a1a1a; margin-bottom: 15px;">Pilih Target Audience:</h4>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: background 0.2s ease;">
+                  <input type="checkbox" value="masyarakat" checked>
+                  <span style="color: #374151; font-size: 0.9rem;">Masyarakat Umum</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: background 0.2s ease;">
+                  <input type="checkbox" value="opd" checked>
+                  <span style="color: #374151; font-size: 0.9rem;">OPD/Dinas</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: background 0.2s ease;">
+                  <input type="checkbox" value="media">
+                  <span style="color: #374151; font-size: 0.9rem;">Media</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: background 0.2s ease;">
+                  <input type="checkbox" value="stakeholder">
+                  <span style="color: #374151; font-size: 0.9rem;">Stakeholder</span>
+                </label>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+              <button onclick="this.closest('div[style]').remove()" style="background: #6b7280; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+                Batal
+              </button>
+              <button onclick="executeGalleryWhatsAppBlast(this, '${achievementId}')" style="background: #25D366; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+                <i class="fab fa-whatsapp"></i> Kirim Sekarang
+              </button>
+            </div>
+          </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Add hover effects to labels
+        modal.querySelectorAll('label').forEach(label => {
+          label.addEventListener('mouseenter', function() {
+            this.style.background = '#f8fafc';
+            this.style.borderColor = '#3b82f6';
+          });
+          label.addEventListener('mouseleave', function() {
+            this.style.background = 'white';
+            this.style.borderColor = '#e2e8f0';
+          });
+        });
+      }
+      
+      // Generate WhatsApp message for gallery
+      function generateGalleryWhatsAppMessage(achievement, title, description) {
+        return `🏆 *${title}*
+
+📅 ${formatDate(achievement.date)}
+📝 ${description}
+
+💡 *Dampak:*
+${achievement.impact}
+
+📊 *Achievement Stats:*
+• Score: ${achievement.value}
+• Reach: ${achievement.analytics.reach.toLocaleString()}
+• Engagement: ${achievement.analytics.engagement}%
+• Viral Rate: ${achievement.analytics.viralRate}x
+
+🔗 Informasi lengkap: https://pemkab-sleman.go.id/achievement/${achievement.id}
+
+---
+📢 *Pemerintah Kabupaten Sleman*
+#SlemanBersih #SlemanInovatif #Achievement #PemkabSleman`;
+      }
+      
+      // Execute gallery WhatsApp blast
+      function executeGalleryWhatsAppBlast(button, achievementId) {
+        const modal = button.closest('div[style]');
+        const selectedAudiences = Array.from(modal.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+        
+        if (selectedAudiences.length === 0) {
+          showNotification('Silakan pilih minimal satu target audience!', 'warning');
+          return;
+        }
+        
+        // Find achievement data
+        const achievement = unifiedAchievementData.achievements.find(a => a.id === achievementId);
+        
+        if (achievement) {
+          // Send WhatsApp blast
+          sendWhatsAppBlastForContent({
+            achievement: achievement,
+            customTitle: achievement.title,
+            customDescription: achievement.description
+          }, selectedAudiences);
+          
+          // Close modal
+          modal.remove();
+          
+          showNotification(`📱 WhatsApp blast berhasil dikirim ke ${selectedAudiences.length} audience!`, 'success');
+        }
+      }
+      
+      // WhatsApp Blasting Functions
+      function sendWhatsAppBlast() {
+        try {
+          const contentSelect = document.getElementById('content-select');
+          const customMessage = document.getElementById('custom-message').value;
+          const targetCheckboxes = document.querySelectorAll('.target-checkbox:checked');
+          
+          if (!contentSelect.value) {
+            showNotification('Silakan pilih konten achievement terlebih dahulu!', 'warning');
+            return;
+          }
+          
+          if (targetCheckboxes.length === 0) {
+            showNotification('Silakan pilih minimal satu target audience!', 'warning');
+            return;
+          }
+          
+          const selectedContent = contentSelectData.find(c => c.id === contentSelect.value);
+          const targets = Array.from(targetCheckboxes).map(cb => cb.value);
+          
+          let totalRecipients = 0;
+          let successCount = 0;
+          
+          targets.forEach(target => {
+            const contacts = whatsappContacts[target] || [];
+            totalRecipients += contacts.length;
+            
+            contacts.forEach(contact => {
+              const message = generateWhatsAppMessage(selectedContent, customMessage);
+              const whatsappUrl = `https://wa.me/${contact.phone}?text=${encodeURIComponent(message)}`;
+              
+              // Simulate sending (in real implementation, this would use WhatsApp API)
+              setTimeout(() => {
+                successCount++;
+                if (successCount === totalRecipients) {
+                  showNotification(`✅ WhatsApp blast berhasil! ${totalRecipients} pesan terkirim`, 'success');
+                  updateEngagementData();
+                }
+              }, 100);
+            });
+          });
+          
+          showNotification(`📤 Mengirim ${totalRecipients} pesan WhatsApp...`, 'info');
+          
+        } catch (error) {
+          console.error('Error sending WhatsApp blast:', error);
+          showNotification('❌ Gagal mengirim WhatsApp blast. Silakan coba lagi.', 'error');
+        }
+      }
+      
+      function scheduleWhatsAppBlast() {
+        try {
+          const contentSelect = document.getElementById('content-select');
+          const scheduleDate = document.getElementById('schedule-date').value;
+          const scheduleTime = document.getElementById('schedule-time').value;
+          const targetCheckboxes = document.querySelectorAll('.target-checkbox:checked');
+          
+          if (!contentSelect.value) {
+            showNotification('Silakan pilih konten achievement terlebih dahulu!', 'warning');
+            return;
+          }
+          
+          if (!scheduleDate || !scheduleTime) {
+            showNotification('Silakan pilih tanggal dan waktu jadwal!', 'warning');
+            return;
+          }
+          
+          if (targetCheckboxes.length === 0) {
+            showNotification('Silakan pilih minimal satu target audience!', 'warning');
+            return;
+          }
+          
+          const scheduleDateTime = new Date(`${scheduleDate}T${scheduleTime}`);
+          const now = new Date();
+          
+          if (scheduleDateTime <= now) {
+            showNotification('Jadwal harus di masa depan!', 'warning');
+            return;
+          }
+          
+          // Store schedule in localStorage
+          const schedule = {
+            content: contentSelect.value,
+            date: scheduleDate,
+            time: scheduleTime,
+            targets: Array.from(targetCheckboxes).map(cb => cb.value),
+            customMessage: document.getElementById('custom-message').value,
+            id: Date.now()
+          };
+          
+          let schedules = JSON.parse(localStorage.getItem('whatsappSchedules') || '[]');
+          schedules.push(schedule);
+          localStorage.setItem('whatsappSchedules', JSON.stringify(schedules));
+          
+          showNotification(`✅ WhatsApp blast dijadwalkan untuk ${scheduleDate} ${scheduleTime}`, 'success');
+          
+        } catch (error) {
+          console.error('Error scheduling WhatsApp blast:', error);
+          showNotification('❌ Gagal menjadwalkan WhatsApp blast. Silakan coba lagi.', 'error');
+        }
+      }
+      
+      function previewWhatsAppMessage() {
+        try {
+          const contentSelect = document.getElementById('content-select');
+          const customMessage = document.getElementById('custom-message').value;
+          
+          if (!contentSelect.value) {
+            showNotification('Silakan pilih konten achievement terlebih dahulu!', 'warning');
+            return;
+          }
+          
+          const selectedContent = contentSelectData.find(c => c.id === contentSelect.value);
+          const message = generateWhatsAppMessage(selectedContent, customMessage);
+          
+          // Show preview modal
+          const modal = document.createElement('div');
+          modal.style.cssText = `
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); z-index: 3000;
+            display: flex; align-items: center; justify-content: center;
+          `;
+          
+          modal.innerHTML = `
+            <div style="background: white; padding: 30px; border-radius: 16px; max-width: 500px; width: 90%;">
+              <h3 style="margin-bottom: 20px; color: #1a1a1a;">📱 Preview Pesan WhatsApp</h3>
+              <div style="background: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #25d366; margin-bottom: 20px;">
+                <div style="white-space: pre-wrap; line-height: 1.6; color: #374151;">${message}</div>
+              </div>
+              <div style="text-align: right;">
+                <button onclick="this.closest('div[style]').remove()" style="background: #6b7280; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+                  Tutup
+                </button>
+              </div>
+            </div>
+          `;
+          
+          document.body.appendChild(modal);
+          
+        } catch (error) {
+          console.error('Error previewing WhatsApp message:', error);
+          showNotification('❌ Gagal menampilkan preview. Silakan coba lagi.', 'error');
+        }
+      }
+      
+      function generateWhatsAppMessage(content, customMessage) {
+        const defaultMessage = `🏆 *${content.title}*
+
+📅 ${formatDate(content.date)}
+📝 ${content.description}
+
+💡 *Manfaat:*
+${content.impact}
+
+📊 *Achievement Stats:*
+• Engagement: ${content.engagement}%
+• Reach: ${content.reach.toLocaleString()}
+• Viral Rate: ${content.viralRate}x
+
+🔗 Informasi lengkap: https://pemkab-sleman.go.id/achievement/${content.id}
+
+---
+📢 *Pemerintah Kabupaten Sleman*
+#SlemanBersih #SlemanInovatif #Achievement`;
+        
+        return customMessage ? `${customMessage}\n\n${defaultMessage}` : defaultMessage;
+      }
+      
+      // Content data for WhatsApp
+      const contentSelectData = [
+        {
+          id: "kabupaten-terinovatif",
+          title: "Kabupaten Terinovatif 2024",
+          description: "Penghargaan tertinggi dalam kategori inovasi pelayanan publik tingkat nasional",
+          date: "2024-03-15",
+          engagement: 89.5,
+          reach: 12500,
+          viralRate: 4.2,
+          impact: "Peningkatan citra daerah secara nasional"
+        },
+        {
+          id: "kepuasan-masyarakat",
+          title: "Indeks Kepuasan Tertinggi",
+          description: "Mencapai indeks kepuasan masyarakat 89.5%, tertinggi sepanjang sejarah",
+          date: "2024-02-28",
+          engagement: 87.3,
+          reach: 8900,
+          viralRate: 3.8,
+          impact: "Kepercayaan masyarakat meningkat"
+        },
+        {
+          id: "digital-transformation",
+          title: "Digital Transformation Award",
+          description: "Pengakuan internasional untuk transformasi digital pelayanan publik",
+          date: "2024-01-20",
+          engagement: 91.2,
+          reach: 15200,
+          viralRate: 5.1,
+          impact: "Top 10 Asia Tenggara"
+        },
+        {
+          id: "sistem-keamanan",
+          title: "Sistem Keamanan Siber Terbaik",
+          description: "Implementasi sistem keamanan siber komprehensif untuk melindungi data masyarakat",
+          date: "2023-12-10",
+          engagement: 85.6,
+          reach: 7800,
+          viralRate: 2.9,
+          impact: "Zero security incidents"
+        }
+      ];
+      
+      // Engagement Tracking Functions
+      function renderEngagementStats() {
+        const statsContainer = document.getElementById('engagement-stats');
+        if (statsContainer) {
+          statsContainer.innerHTML = `
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+              <div style="background: #f8fafc; padding: 15px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem; font-weight: 700; color: #3b82f6;">2,350</div>
+                <div style="color: #64748b; font-size: 0.85rem;">Total Reach</div>
+                <div style="color: #059669; font-size: 0.8rem;">+24.3%</div>
+              </div>
+              <div style="background: #f8fafc; padding: 15px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem; font-weight: 700; color: #10b981;">95%</div>
+                <div style="color: #64748b; font-size: 0.85rem;">Engagement Rate</div>
+                <div style="color: #059669; font-size: 0.8rem;">+9.2%</div>
+              </div>
+              <div style="background: #f8fafc; padding: 15px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">520</div>
+                <div style="color: #64748b; font-size: 0.85rem;">Total Shares</div>
+                <div style="color: #059669; font-size: 0.8rem;">+36.8%</div>
+              </div>
+              <div style="background: #f8fafc; padding: 15px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem; font-weight: 700; color: #8b5cf6;">201</div>
+                <div style="color: #64748b; font-size: 0.85rem;">Total Comments</div>
+                <div style="color: #059669; font-size: 0.8rem;">+35.8%</div>
+              </div>
+            </div>
+          `;
+        }
+      }
+      
+      function renderEngagementTrend() {
+        const trendContainer = document.getElementById('engagement-trend');
+        if (trendContainer) {
+          trendContainer.innerHTML = engagementData.trends.map(trend => `
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f8fafc; border-radius: 8px; margin-bottom: 10px;">
+              <div>
+                <div style="font-weight: 600; color: #1a1a1a;">${trend.metric}</div>
+                <div style="color: #64748b; font-size: 0.85rem;">${trend.previous} → ${trend.current}</div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-weight: 700; color: ${trend.status === 'up' ? '#059669' : '#dc2626'};">
+                  ${trend.status === 'up' ? '↑' : '↓'} ${trend.change}%
+                </div>
+                <div style="color: #64748b; font-size: 0.75rem;">vs periode lalu</div>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+      
+      function initializeEngagementChart() {
+        const ctx = document.getElementById('engagementChart');
+        if (ctx) {
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: engagementData.daily.map(d => d.date.split('-').slice(2).join('/')),
+              datasets: [
+                {
+                  label: 'Reach',
+                  data: engagementData.daily.map(d => d.reach),
+                  borderColor: '#3b82f6',
+                  backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                  tension: 0.4,
+                  fill: true
+                },
+                {
+                  label: 'Engagement',
+                  data: engagementData.daily.map(d => d.engagement),
+                  borderColor: '#10b981',
+                  backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                  tension: 0.4,
+                  fill: true
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: 'bottom'
+                }
+              },
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        }
+      }
+      
+      // Impact Analysis Functions
+      function renderImpactTable() {
+        const tableContainer = document.getElementById('impact-table');
+        if (tableContainer) {
+          tableContainer.innerHTML = `
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                <thead>
+                  <tr style="background: #f8fafc;">
+                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid #e2e8f0;">Konten</th>
+                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #e2e8f0;">Reach</th>
+                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #e2e8f0;">Engagement</th>
+                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #e2e8f0;">Shares</th>
+                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #e2e8f0;">Comments</th>
+                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #e2e8f0;">Sentiment</th>
+                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #e2e8f0;">Viral Rate</th>
+                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid #e2e8f0;">Impact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${contentImpactData.map(item => `
+                    <tr style="border-bottom: 1px solid #e2e8f0;">
+                      <td style="padding: 12px; font-weight: 600;">${item.title}</td>
+                      <td style="padding: 12px; text-align: center;">${item.reach.toLocaleString()}</td>
+                      <td style="padding: 12px; text-align: center;">
+                        <span style="background: ${item.engagement >= 90 ? '#dcfce7' : '#fef3c7'}; color: ${item.engagement >= 90 ? '#166534' : '#92400e'}; padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">
+                          ${item.engagement}%
+                        </span>
+                      </td>
+                      <td style="padding: 12px; text-align: center;">${item.shares.toLocaleString()}</td>
+                      <td style="padding: 12px; text-align: center;">${item.comments.toLocaleString()}</td>
+                      <td style="padding: 12px; text-align: center;">
+                        <span style="background: ${item.sentiment >= 90 ? '#dcfce7' : '#fef3c7'}; color: ${item.sentiment >= 90 ? '#166534' : '#92400e'}; padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">
+                          ${item.sentiment}%
+                        </span>
+                      </td>
+                      <td style="padding: 12px; text-align: center;">${item.viralRate}x</td>
+                      <td style="padding: 12px; font-size: 0.85rem;">${item.impact}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          `;
+        }
+      }
+      
+      function updateEngagementData() {
+        // Simulate real-time engagement update
+        const currentData = engagementData.daily[engagementData.daily.length - 1];
+        const updatedData = {
+          ...currentData,
+          reach: currentData.reach + Math.floor(Math.random() * 50),
+          engagement: Math.min(100, currentData.engagement + Math.random() * 2),
+          shares: currentData.shares + Math.floor(Math.random() * 20),
+          comments: currentData.comments + Math.floor(Math.random() * 10)
+        };
+        
+        engagementData.daily[engagementData.daily.length - 1] = updatedData;
+        renderEngagementStats();
+      }
+      
+      // Render achievement gallery
+      function renderAchievementGallery() {
+        const gallery = document.getElementById('achievement-gallery');
+        if (gallery) {
+          gallery.innerHTML = achievementGalleryData.map(item => `
+            <div class="achievement-gallery-item">
+              <div class="gallery-image">
+                <img src="${item.image}" alt="${item.title}" />
+                <div class="gallery-category">${item.category}</div>
+              </div>
+              <div class="gallery-content">
+                <h3>${item.title}</h3>
+                <p class="gallery-date">${formatDate(item.date)}</p>
+                <p class="gallery-description">${item.description}</p>
+                <div class="gallery-impact">
+                  <i class="fa-solid fa-chart-line"></i>
+                  <span>${item.impact}</span>
+                </div>
+                <!-- WhatsApp Blast Button -->
+                <div class="gallery-actions">
+                  <button class="btn-whatsapp-blast-small" onclick="galleryWhatsAppBlast('${item.id}', '${item.title}', '${item.description}')">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Blast
+                  </button>
+                </div>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+      
+      // Initialize charts
+      function initializeCharts() {
+        // Achievement Trend Chart
+        const achievementCtx = document.getElementById('achievementChart');
+        if (achievementCtx) {
+          new Chart(achievementCtx, {
+            type: 'line',
+            data: {
+              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+              datasets: [{
+                label: 'Achievement Points',
+                data: [65, 78, 90, 81, 96, 105],
+                borderColor: '#3b82f6',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                tension: 0.4,
+                fill: true
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: false
+                }
+              },
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        }
+        
+        // Platform Performance Chart
+        const platformCtx = document.getElementById('platformChart');
+        if (platformCtx) {
+          new Chart(platformCtx, {
+            type: 'doughnut',
+            data: {
+              labels: ['Facebook', 'Instagram', 'Twitter', 'TikTok', 'YouTube'],
+              datasets: [{
+                data: [35, 28, 20, 12, 5],
+                backgroundColor: [
+                  '#1877F2',
+                  '#E4405F',
+                  '#000000',
+                  '#000000',
+                  '#FF0000'
+                ]
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: 'bottom'
+                }
+              }
+            }
+          });
+        }
+      }
+      
+      // Format date
+      function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('id-ID', options);
+      }
+      
+      // Export report
+      function exportReport() {
+        showNotification('Laporan achievement berhasil diekspor ke PDF!', 'success');
+      }
+      
+      // Sync data
+      function syncData() {
+        showNotification('Data achievement berhasil disinkronisasi!', 'success');
+      }
+      
+      // Initialize on DOM load
+      document.addEventListener('DOMContentLoaded', function() {
+        updateCurrentDate();
+        setInterval(updateCurrentDate, 60000); // Update every minute
+        
+        // Initialize the new unified wizard
+        initializeWizard();
+        
+        // Initialize achievement gallery (bottom section)
+        renderAchievementGallery();
+        
+        // Initialize engagement tracking
+        renderEngagementStats();
+        renderEngagementTrend();
+        renderImpactTable();
+        
+        // Initialize charts
+        setTimeout(() => {
+          initializeCharts();
+          initializeEngagementChart();
+        }, 500);
+        
+        // Set default date and time for scheduling
+        const now = new Date();
+        const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+        const scheduleDatetime = document.getElementById('publish-datetime');
+        if (scheduleDatetime) {
+          scheduleDatetime.value = tomorrow.toISOString().slice(0, 16);
+        }
+      });
+      
+      // Helper functions
+      function getPlatformIcon(platform) {
+        const icons = {
+          facebook: '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" alt="Facebook" style="width: 2rem; height: 2rem; filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);">',
+          instagram: '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/instagram/instagram-original.svg" alt="Instagram" style="width: 2rem; height: 2rem;">',
+          twitter: '<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style="width: 2rem; height: 2rem;">',
+          tiktok: '<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok" style="width: 2rem; height: 2rem;">',
+          youtube: '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/youtube/youtube-original.svg" alt="YouTube" style="width: 2rem; height: 2rem;">'
+        };
+        return icons[platform] || '<i class="fa-solid fa-question" style="font-size: 2rem;"></i>';
+      }
+      
+      function getPlatformName(platform) {
+        const names = {
+          facebook: 'Facebook',
+          instagram: 'Instagram', 
+          twitter: 'Twitter',
+          tiktok: 'TikTok',
+          youtube: 'YouTube'
+        };
+        return names[platform] || 'Platform';
+      }
+    </script>
+    <script src="css/showcase-achievement.css"></script>
+  </body>
+</html>

@@ -15,7 +15,7 @@
   </head>
   <body>
     <!-- Sidebar -->
-    <aside>
+<aside>
       <nav class="sidebar">
         <div class="nav-header">
           <div class="logo">
@@ -39,12 +39,12 @@
           </div>
           
           <div class="nav-item" onclick="window.location.href='dashboard.html#issues'">
-            <i class="fa-solid fa-exclamation-circle"></i>
+            <i class="fa-solid fa-tasks"></i>
             <span>Manajemen Isu</span>
           </div>
           
           <div class="nav-item" onclick="window.location.href='dashboard.html#optimizer'">
-            <i class="fa-solid fa-robot"></i>
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
             <span>Public Comm. AI</span>
           </div>
           
@@ -53,7 +53,7 @@
             <span>Executive Reports</span>
           </div>
           
-          <div class="nav-item" onclick="window.location.href='assignment.html'">
+          <div class="nav-item active" onclick="window.location.href='assignment.html'">
             <i class="fa-solid fa-user-tie"></i>
             <span>Assignment Dinas</span>
           </div>
@@ -63,14 +63,19 @@
             <span>Peta Visualisasi</span>
           </div>
           
-          <div class="nav-item" onclick="window.location.href='monitoringIssue.html'">
-            <i class="fa-solid fa-list-check"></i>
-            <span>Monitoring Isu</span>
-          </div>
-          
           <div class="nav-item" onclick="window.location.href='social-media.html'">
             <i class="fa-solid fa-share-nodes"></i>
             <span>Social Media Management</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='leaderboard-dinas.html'">
+            <i class="fa-solid fa-trophy"></i>
+            <span>Leaderboard Dinas</span>
+          </div>
+          
+          <div class="nav-item" onclick="window.location.href='showcase-achievement.html'">
+            <i class="fa-solid fa-award"></i>
+            <span>Showcase Achievement</span>
           </div>
         </div>
       </nav>
@@ -125,6 +130,145 @@
               <div class="stat-label">Avg Jam Penyelesaian</div>
               <div class="stat-value">6.2h</div>
               <div class="stat-trend text-muted">Rata-rata Selesai</div>
+            </div>
+          </div>
+          
+          <!-- SLA (Service Level Agreement) Section -->
+          <div class="sla-section">
+            <div class="section-header">
+              <h2 style="color: #1a1a1a; margin: 0; font-size: 1.5rem; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-clock" style="color: #3b82f6;"></i>
+                Service Level Agreement (SLA)
+              </h2>
+              <p style="color: #64748b; margin: 5px 0 0 0; font-size: 0.9rem;">
+                Standar waktu respons dan resolusi untuk setiap tingkat prioritas isu
+              </p>
+            </div>
+            
+            <div class="sla-grid">
+              <!-- Critical Priority -->
+              <div class="sla-card critical">
+                <div class="sla-header">
+                  <div class="priority-badge critical">CRITICAL</div>
+                  <i class="fa-solid fa-exclamation-triangle"></i>
+                </div>
+                <div class="sla-content">
+                  <h3>Krisis/Emergency</h3>
+                  <div class="sla-metrics">
+                    <div class="sla-metric">
+                      <span class="metric-label">First Response:</span>
+                      <span class="metric-value">2 Jam</span>
+                    </div>
+                    <div class="sla-metric">
+                      <span class="metric-label">Resolusi:</span>
+                      <span class="metric-value">24 Jam</span>
+                    </div>
+                  </div>
+                  <div class="sla-examples">
+                    <h4>Contoh Kasus:</h4>
+                    <ul>
+                      <li>Bencana alam (banjir, longsor)</li>
+                      <li>Kebakaran besar</li>
+                      <li>Listrik padam massal</li>
+                      <li>Kerusakan infrastruktur vital</li>
+                      <li>Krisis kesehatan masyarakat</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- High Priority -->
+              <div class="sla-card high">
+                <div class="sla-header">
+                  <div class="priority-badge high">HIGH</div>
+                  <i class="fa-solid fa-exclamation-circle"></i>
+                </div>
+                <div class="sla-content">
+                  <h3>Penting/Urgent</h3>
+                  <div class="sla-metrics">
+                    <div class="sla-metric">
+                      <span class="metric-label">First Response:</span>
+                      <span class="metric-value">4 Jam</span>
+                    </div>
+                    <div class="sla-metric">
+                      <span class="metric-label">Resolusi:</span>
+                      <span class="metric-value">48 Jam</span>
+                    </div>
+                  </div>
+                  <div class="sla-examples">
+                    <h4>Contoh Kasus:</h4>
+                    <ul>
+                      <li>Jalan utama rusak parah</li>
+                      <li>Air bersih terhenti</li>
+                      <li>Pengaduan layanan kesehatan</li>
+                      <li>Kerusakan jembatan</li>
+                      <li>Macet total di jalur utama</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Medium Priority -->
+              <div class="sla-card medium">
+                <div class="sla-header">
+                  <div class="priority-badge medium">MEDIUM</div>
+                  <i class="fa-solid fa-info-circle"></i>
+                </div>
+                <div class="sla-content">
+                  <h3>Sedang/Normal</h3>
+                  <div class="sla-metrics">
+                    <div class="sla-metric">
+                      <span class="metric-label">First Response:</span>
+                      <span class="metric-value">8 Jam</span>
+                    </div>
+                    <div class="sla-metric">
+                      <span class="metric-label">Resolusi:</span>
+                      <span class="metric-value">7 Hari</span>
+                    </div>
+                  </div>
+                  <div class="sla-examples">
+                    <h4>Contoh Kasus:</h4>
+                    <ul>
+                      <li>Jalan kecil rusak</li>
+                      <li>Penerangan jalan mati</li>
+                      <li>Sampah menumpuk</li>
+                      <li>Drainase tersumbat</li>
+                      <li>Pengaduan administrasi</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Low Priority -->
+              <div class="sla-card low">
+                <div class="sla-header">
+                  <div class="priority-badge low">LOW</div>
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="sla-content">
+                  <h3>Rendah/Rutin</h3>
+                  <div class="sla-metrics">
+                    <div class="sla-metric">
+                      <span class="metric-label">First Response:</span>
+                      <span class="metric-value">24 Jam</span>
+                    </div>
+                    <div class="sla-metric">
+                      <span class="metric-label">Resolusi:</span>
+                      <span class="metric-value">14 Hari</span>
+                    </div>
+                  </div>
+                  <div class="sla-examples">
+                    <h4>Contoh Kasus:</h4>
+                    <ul>
+                      <li>Pemeliharaan rutin</li>
+                      <li>Permohonan informasi</li>
+                      <li>Saran dan masukan</li>
+                      <li>Pengaduan minor</li>
+                      <li>Permintaan layanan standar</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           
@@ -301,9 +445,7 @@
           
           <!-- Action Buttons -->
           <div style="text-align: center; margin-top: 30px;">
-            <button class="btn-generate" style="background: #10b981; margin-right: 10px;" onclick="addNewDinas()">
-              <i class="fa-solid fa-plus"></i> Tambah Dinas
-            </button>
+          
             <button class="btn-generate" style="background: #6366f1;" onclick="exportReport()">
               <i class="fa-solid fa-download"></i> Export Laporan
             </button>
@@ -316,6 +458,7 @@
     <script src="js/modules/assignment-dinas.js"></script>
     <script>
       // Update current date
+      
       function updateCurrentDate() {
         const now = new Date();
         const options = { 
