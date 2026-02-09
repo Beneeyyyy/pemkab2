@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <nav>
+      <nav id="admin-nav">
         <div class="nav-item active" onclick="switchView('dashboard')">
           <i class="fa-solid fa-chart-line"></i>
           <span>Situation Room</span>
@@ -64,6 +64,13 @@
         <div class="nav-item" onclick="switchView('reports')">
           <i class="fa-solid fa-file-pdf"></i>
           <span>Executive Reports</span>
+        </div>
+      </nav>
+      
+      <nav id="pic-nav" style="display: none;">
+        <div class="nav-item active" onclick="switchView('inbox')">
+          <i class="fa-solid fa-inbox"></i>
+          <span>Pesan Masuk</span>
         </div>
       </nav>
 
@@ -1007,6 +1014,180 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
                   >
                     <i class="fa-solid fa-download"></i> Download PDF
                   </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Pesan Masuk View untuk PIC -->
+        <section id="inbox" class="view-section">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Pesan Masuk (24h)</div>
+              <div class="stat-value">47</div>
+              <div class="stat-trend text-warning">
+                <i class="fa-solid fa-arrow-up"></i> 8% vs kemarin
+              </div>
+            </div>
+            <div class="stat-card negative">
+              <div class="stat-label">Sentimen Negatif</div>
+              <div class="stat-value text-danger">12</div>
+              <div class="stat-trend text-danger">Perlu Tindakan</div>
+            </div>
+            <div class="stat-card positive">
+              <div class="stat-label">TikTok Mentions</div>
+              <div class="stat-value text-success">28</div>
+              <div class="stat-trend text-muted">Monitoring Aktif</div>
+            </div>
+            <div class="stat-card warning">
+              <div class="stat-label">X (Twitter) Mentions</div>
+              <div class="stat-value text-warning">19</div>
+              <div class="stat-trend text-muted">Monitoring Aktif</div>
+            </div>
+          </div>
+
+          <div class="dashboard-main">
+            <!-- Map Lokasi -->
+            <div class="chart-container" style="height: 300px; margin-bottom: 20px;">
+              <h3 style="font-size: 1rem; color: #1a1a1a; margin-bottom: 15px;">
+                <i class="fa-solid fa-map-marker-alt"></i> Lokasi Permasalahan
+              </h3>
+              <div id="inbox-map" style="height: 250px; border-radius: 8px; background: #f0f0f0;"></div>
+            </div>
+
+            <!-- Pesan dari Admin -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+              <div class="chart-container">
+                <h3 style="font-size: 0.9rem; color: #1a1a1a; margin-bottom: 10px;">
+                  <i class="fa-brands fa-tiktok" style="color: #000;"></i> Pesan Admin - TikTok
+                </h3>
+                <div class="admin-message-list">
+                  <div class="message-item" onclick="showMessageDetail('tiktok-1')">
+                    <div class="message-header">
+                      <span class="message-platform">📱 TikTok</span>
+                      <span class="message-priority high">🔴 Prioritas Tinggi</span>
+                    </div>
+                    <div class="message-content">Video jalan rusak viral di Condongcatur</div>
+                    <div class="message-meta">
+                      <span class="message-user">@user_sleman</span>
+                      <span class="message-time">Admin: 15 menit lalu</span>
+                      <span class="message-location">📍 Condongcatur</span>
+                    </div>
+                    <div class="message-admin-note" style="display: none;" id="tiktok-1-note">
+                      <strong>📩 Pesan dari Admin:</strong> "Segera tinjau lokasi ini dan koordinasi dengan dinas PU. Video sudah viral 15K views, perlu respon cepat!"
+                    </div>
+                  </div>
+                  <div class="message-item" onclick="showMessageDetail('tiktok-2')">
+                    <div class="message-header">
+                      <span class="message-platform">📱 TikTok</span>
+                      <span class="message-priority medium">🟡 Prioritas Sedang</span>
+                    </div>
+                    <div class="message-content">Keluhan sampah menumpuk di area Depok</div>
+                    <div class="message-meta">
+                      <span class="message-user">@warga_sleman</span>
+                      <span class="message-time">Admin: 1 jam lalu</span>
+                      <span class="message-location">📍 Depok</span>
+                    </div>
+                    <div class="message-admin-note" style="display: none;" id="tiktok-2-note">
+                      <strong>📩 Pesan dari Admin:</strong> "Koordinasi dengan dinas lingkungan. Sampaikan jadwal pengangkutan yang baru ke warga."
+                    </div>
+                  </div>
+                  <div class="message-item" onclick="showMessageDetail('tiktok-3')">
+                    <div class="message-header">
+                      <span class="message-platform">📱 TikTok</span>
+                      <span class="message-priority low">🟢 Prioritas Rendah</span>
+                    </div>
+                    <div class="message-content">Fasilitas umum rusak di parkir Sleman</div>
+                    <div class="message-meta">
+                      <span class="message-user">@komunitas_sleman</span>
+                      <span class="message-time">Admin: 2 jam lalu</span>
+                      <span class="message-location">📍 Sleman Kota</span>
+                    </div>
+                    <div class="message-admin-note" style="display: none;" id="tiktok-3-note">
+                      <strong>📩 Pesan dari Admin:</strong> "Survey lokasi dan buat laporan perbaikan. Prioritaskan minggu depan."
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chart-container">
+                <h3 style="font-size: 0.9rem; color: #1a1a1a; margin-bottom: 10px;">
+                  <i class="fa-brands fa-x-twitter" style="color: #000;"></i> Pesan Admin - X (Twitter)
+                </h3>
+                <div class="admin-message-list">
+                  <div class="message-item" onclick="showMessageDetail('twitter-1')">
+                    <div class="message-header">
+                      <span class="message-platform">🐦 X</span>
+                      <span class="message-priority high">🔴 Prioritas Tinggi</span>
+                    </div>
+                    <div class="message-content">Keluhan pelayanan kesehatan lambat</div>
+                    <div class="message-meta">
+                      <span class="message-user">@patient_sleman</span>
+                      <span class="message-time">Admin: 30 menit lalu</span>
+                      <span class="message-location">📍 Tempel</span>
+                    </div>
+                    <div class="message-admin-note" style="display: none;" id="twitter-1-note">
+                      <strong>📩 Pesan dari Admin:</strong> "Prioritaskan laporan ini! Hubungi kepala puskesmas untuk penjelasan dan solusi segera."
+                    </div>
+                  </div>
+                  <div class="message-item" onclick="showMessageDetail('twitter-2')">
+                    <div class="message-header">
+                      <span class="message-platform">🐦 X</span>
+                      <span class="message-priority medium">🟡 Prioritas Sedang</span>
+                    </div>
+                    <div class="message-content">Proses perizinan yang membingungkan</div>
+                    <div class="message-meta">
+                      <span class="message-user">@pengusaha_sleman</span>
+                      <span class="message-time">Admin: 1.5 jam lalu</span>
+                      <span class="message-location">📍 Ngemplak</span>
+                    </div>
+                    <div class="message-admin-note" style="display: none;" id="twitter-2-note">
+                      <strong>📩 Pesan dari Admin:</strong> "Bantu klarifikasi proses perizinan. Berikan panduan step by step ke pengusaha."
+                    </div>
+                  </div>
+                  <div class="message-item" onclick="showMessageDetail('twitter-3')">
+                    <div class="message-header">
+                      <span class="message-platform">🐦 X</span>
+                      <span class="message-priority low">🟢 Prioritas Rendah</span>
+                    </div>
+                    <div class="message-content">Infrastruktur jalan perlu perhatian</div>
+                    <div class="message-meta">
+                      <span class="message-user">@driver_sleman</span>
+                      <span class="message-time">Admin: 3 jam lalu</span>
+                      <span class="message-location">📍 Gamping</span>
+                    </div>
+                    <div class="message-admin-note" style="display: none;" id="twitter-3-note">
+                      <strong>📩 Pesan dari Admin:</strong> "Dokumentasikan untuk perencanaan Q2. Masukkan dalam daftar prioritas infrastruktur."
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AI Generator -->
+            <div class="chart-container">
+              <h3 style="font-size: 1rem; color: #1a1a1a; margin-bottom: 15px;">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> AI Content Generator
+              </h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                  <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: #666;">Pilih Permasalahan:</label>
+                  <select id="problem-select" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                    <option value="jalan-rusak">Jalan Rusak di Condongcatur</option>
+                    <option value="sampah">Sampah tidak diangkut</option>
+                    <option value="pelayanan">Pelayanan kesehatan lambat</option>
+                    <option value="perizinan">Proses perizinan rumit</option>
+                  </select>
+                  <button onclick="generateAIContent()" style="width: 100%; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer;">
+                    <i class="fa-solid fa-magic"></i> Generate Video Script
+                  </button>
+                </div>
+                <div>
+                  <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: #666;">Hasil AI:</label>
+                  <div id="ai-result" style="width: 100%; height: 120px; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background: #f9f9f9; font-size: 0.85rem; overflow-y: auto;">
+                    Klik "Generate" untuk membuat video script...
+                  </div>
                 </div>
               </div>
             </div>

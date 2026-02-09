@@ -504,6 +504,215 @@ header {
   letter-spacing: 0.5px;
 }
 
+.admin-message-list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.message-item {
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.message-item:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-item.active {
+  background: #eff6ff;
+  border-color: #3b82f6;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.message-platform {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.message-priority {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.message-priority.high {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.message-priority.medium {
+  background: #fefce8;
+  color: #ca8a04;
+}
+
+.message-priority.low {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.message-content {
+  font-size: 0.85rem;
+  color: #1f2937;
+  font-weight: 500;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.message-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  color: #6b7280;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.message-user {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.message-time {
+  color: #6b7280;
+}
+
+.message-location {
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  color: #374151;
+}
+
+.message-admin-note {
+  margin-top: 10px;
+  padding: 8px;
+  background: #fffbeb;
+  border: 1px solid #fbbf24;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #92400e;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 100px;
+    transform: translateY(0);
+  }
+}
+
+.danger-content-list {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.danger-item {
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.danger-item:hover {
+  background: #fee2e2;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+}
+
+.danger-content {
+  font-size: 0.85rem;
+  color: #991b1b;
+  font-weight: 500;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.danger-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #6b7280;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.danger-user {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.danger-time {
+  color: #6b7280;
+}
+
+.danger-location {
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: #374151;
+}
+
+#ai-result {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#inbox-map {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+#inbox-map::before {
+  content: "🗺️ Peta Lokasi Permasalahan";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  color: #64748b;
+  text-align: center;
+  z-index: 1;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

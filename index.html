@@ -126,7 +126,12 @@
       .login-input::placeholder {
         color: rgba(255, 255, 255, 0.5);
       }
-
+      
+      .login-input option {
+        background: #1e293b;
+        color: #ffffff;
+      }
+      
       .login-input:focus {
         background: rgba(255, 255, 255, 0.2);
         border-color: rgba(255, 255, 255, 0.5);
@@ -179,10 +184,20 @@
 
       <form id="loginForm" onsubmit="handleLogin(event)">
         <div class="form-group">
+          <select class="login-input" id="loginAs" onchange="updateCredentials()">
+            <option value="admin">Admin</option>
+            <option value="health">Kepala Dinas Kesehatan</option>
+            <option value="humas">Humas Pemkab</option>
+            <option value="response">Tim Respon Cepat</option>
+          </select>
+          <i class="fa-solid fa-user-tag"></i>
+        </div>
+        <div class="form-group">
           <input
             type="text"
             class="login-input"
             placeholder="ID Pengguna"
+            id="username"
             value="ADMIN-SLEMAN"
           />
           <i class="fa-solid fa-user"></i>
@@ -192,6 +207,7 @@
             type="password"
             class="login-input"
             placeholder="Kata Sandi"
+            id="password"
             value="••••••••"
           />
           <i class="fa-solid fa-lock"></i>
@@ -207,10 +223,27 @@
     </div>
 
     <script>
+      function updateCredentials() {
+        const loginAs = document.getElementById('loginAs').value;
+        const username = document.getElementById('username');
+        const password = document.getElementById('password');
+        
+        const credentials = {
+          admin: { user: 'ADMIN-SLEMAN', pass: 'ADMIN2024' },
+          health: { user: 'KEPALA-DINKES', pass: 'KESEHATAN2024' },
+          humas: { user: 'HUMAS-PEMKAB', pass: 'HUMAS2024' },
+          response: { user: 'TIM-RESPON', pass: 'CEPAT2024' }
+        };
+        
+        username.value = credentials[loginAs].user;
+        password.value = credentials[loginAs].pass;
+      }
+      
       function handleLogin(e) {
         e.preventDefault();
         const btn = document.querySelector(".btn-login");
         const originalContent = btn.innerHTML;
+        const loginAs = document.getElementById('loginAs').value;
 
         btn.innerHTML =
           '<i class="fa-solid fa-circle-notch fa-spin"></i> MEMUAT...';
@@ -218,7 +251,7 @@
         btn.style.cursor = "wait";
 
         setTimeout(() => {
-          window.location.href = "dashboard.html";
+          window.location.href = "dashboard.html?view=" + loginAs;
         }, 1200);
       }
     </script>
