@@ -9,6 +9,115 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <style>
+      /* Gaya untuk daftar pesan */
+      .admin-message-list {
+        max-height: 500px;
+        overflow-y: auto;
+        padding-right: 8px;
+      }
+
+      .message-item {
+        background: white;
+        border-radius: 8px;
+        padding: 12px 15px;
+        margin-bottom: 12px;
+        border-left: 4px solid #e5e7eb;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      }
+
+      .message-item:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      .message-item.active {
+        border-left-color: #3b82f6;
+        background-color: #f8fafc;
+      }
+
+      .message-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+        align-items: center;
+      }
+
+      .message-platform {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #4b5563;
+        background: #f3f4f6;
+        padding: 2px 8px;
+        border-radius: 12px;
+      }
+
+      .message-priority {
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 2px 8px;
+        border-radius: 12px;
+      }
+
+      .message-priority.high {
+        background-color: #fee2e2;
+        color: #dc2626;
+      }
+
+      .message-priority.medium {
+        background-color: #fef3c7;
+        color: #d97706;
+      }
+
+      .message-priority.low {
+        background-color: #dcfce7;
+        color: #16a34a;
+      }
+
+      .message-content {
+        font-weight: 500;
+        margin: 8px 0;
+        color: #1f2937;
+      }
+
+      .message-meta {
+        display: flex;
+        gap: 12px;
+        font-size: 0.75rem;
+        color: #6b7280;
+      }
+
+      .message-admin-note {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f0f9ff;
+        border-radius: 6px;
+        border-right: 3px solid #0ea5e9;
+        font-size: 0.85rem;
+        color: #0369a1;
+      }
+
+      /* Scrollbar styling */
+      .admin-message-list::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .admin-message-list::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      .admin-message-list::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+      }
+
+      .admin-message-list::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
     <link rel="icon" href="assets/logo.jpg" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link
@@ -313,153 +422,181 @@
         <!-- Early Warning View (Enhanced) -->
         <section id="warning" class="view-section">
           <div class="glass" style="padding: 30px; border-radius: 16px">
+            <!-- Viral Detection Header -->
             <div class="flex-between" style="margin-bottom: 30px">
               <div>
-                <h2
-                  style="font-size: 1.5rem; margin-bottom: 5px; color: #1a1a1a"
-                >
-                  Alert: Lonjakan Pasien RSUD
+                <h2 style="font-size: 1.5rem; margin-bottom: 5px; color: #1a1a1a">
+                  <i class="fa-solid fa-virus-covid text-danger"></i> Viral Content Detection
                 </h2>
-                <div class="text-danger" style="font-size: 0.9rem">
-                  <i class="fa-solid fa-circle-exclamation"></i> Critical Alert
-                  • Detected 2 hours ago
+                <div class="text-warning" style="font-size: 0.9rem">
+                  <i class="fa-solid fa-circle-exclamation"></i> 
+                  <span id="viral-status">Monitoring 247 konten dengan keyword "sleman"</span>
                 </div>
               </div>
-              <!-- Escalation Button -->
               <div style="display: flex; gap: 10px">
-                <button
-                  class="btn-generate"
-                  onclick="alert('Laporan diteruskan ke Dinas Kesehatan')"
-                  style="background: #fff; border: 1px solid #ccc; color: #333"
-                >
-                  <i class="fa-solid fa-share-nodes"></i> Eskalasi
+                <button class="btn-generate" onclick="refreshViralDetection()" style="background: #fff; border: 1px solid #ccc; color: #333">
+                  <i class="fa-solid fa-arrows-rotate"></i> Refresh
                 </button>
                 <button class="btn-generate" onclick="switchView('optimizer')">
-                  <i class="fa-solid fa-wand-sparkles"></i> Mitigasi Publik
+                  <i class="fa-solid fa-wand-sparkles"></i> Generate Response
                 </button>
               </div>
             </div>
 
-            <div
-              style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px"
-            >
-              <div
-                style="
-                  background: #f8fafc;
-                  padding: 20px;
-                  border-radius: 12px;
-                  border: 1px solid #e2e8f0;
-                "
-              >
-                <h4 style="margin-bottom: 15px">Crisis Timeline Analysis</h4>
-                <!-- Mock Timeline -->
-                <div
-                  style="
-                    border-left: 2px solid #cbd5e1;
-                    padding-left: 20px;
-                    margin-left: 10px;
-                  "
-                >
-                  <div style="margin-bottom: 20px; position: relative">
-                    <div
-                      style="
-                        position: absolute;
-                        left: -26px;
-                        width: 10px;
-                        height: 10px;
-                        background: #ef4444;
-                        border-radius: 50%;
-                      "
-                    ></div>
-                    <div style="font-size: 0.8rem; color: #64748b">
-                      10:00 AM
-                    </div>
-                    <div style="font-weight: 600">
-                      Keluhan Antrian Panjang (+40%)
-                    </div>
+            <!-- Viral Metrics Overview -->
+            <div class="viral-metrics" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px;">
+              <div class="viral-metric-card critical">
+                <div class="metric-icon"><i class="fa-solid fa-fire"></i></div>
+                <div class="metric-value" id="critical-count">3</div>
+                <div class="metric-label">Konten Kritis</div>
+                <div class="metric-change">+2 dalam 1 jam</div>
+              </div>
+              <div class="viral-metric-card trending">
+                <div class="metric-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="metric-value" id="trending-count">12</div>
+                <div class="metric-label">Trending Now</div>
+                <div class="metric-change">#RSUDSleman viral</div>
+              </div>
+              <div class="viral-metric-card reach">
+                <div class="metric-icon"><i class="fa-solid fa-eye"></i></div>
+                <div class="metric-value" id="reach-value">1.2M</div>
+                <div class="metric-label">Potential Reach</div>
+                <div class="metric-change">+450K views</div>
+              </div>
+              <div class="viral-metric-card velocity">
+                <div class="metric-icon"><i class="fa-solid fa-rocket"></i></div>
+                <div class="metric-value" id="velocity-score">8.7</div>
+                <div class="metric-label">Viral Velocity</div>
+                <div class="metric-change">Very High</div>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+              <!-- Real-time Viral Feed -->
+              <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                <div class="flex-between" style="margin-bottom: 15px;">
+                  <h4 style="color: #1a1a1a;">
+                    <i class="fa-solid fa-rss text-primary"></i> Live Viral Feed
+                  </h4>
+                  <div class="platform-filter">
+                    <button class="filter-btn active" data-platform="all">All</button>
+                    <button class="filter-btn" data-platform="tiktok">TikTok</button>
+                    <button class="filter-btn" data-platform="twitter">Twitter</button>
+                    <button class="filter-btn" data-platform="instagram">IG</button>
                   </div>
-                  <div style="margin-bottom: 20px; position: relative">
-                    <div
-                      style="
-                        position: absolute;
-                        left: -26px;
-                        width: 10px;
-                        height: 10px;
-                        background: #ef4444;
-                        border-radius: 50%;
-                      "
-                    ></div>
-                    <div style="font-size: 0.8rem; color: #64748b">
-                      10:45 AM
-                    </div>
-                    <div style="font-weight: 600">
-                      Akun @warga_sleman memposting foto antrian RSUD
-                    </div>
-                  </div>
-                  <div style="margin-bottom: 0px; position: relative">
-                    <div
-                      style="
-                        position: absolute;
-                        left: -26px;
-                        width: 10px;
-                        height: 10px;
-                        background: #2563eb;
-                        border-radius: 50%;
-                      "
-                    ></div>
-                    <div style="font-size: 0.8rem; color: #64748b">
-                      11:30 AM
-                    </div>
-                    <div style="font-weight: 600">System Alert Triggered</div>
-                  </div>
+                </div>
+                
+                <div class="viral-feed" id="viralFeed" style="max-height: 400px; overflow-y: auto;">
+                  <!-- Viral content items will be inserted here -->
                 </div>
               </div>
 
-              <!-- Automated Disposisi Panel -->
-              <div
-                style="
-                  background: #fffbe6;
-                  padding: 20px;
-                  border-radius: 12px;
-                  border: 1px solid #2563eb;
-                "
-              >
-                <h4 style="margin-bottom: 15px; color: #1e40af">
-                  <i class="fa-solid fa-gavel"></i> Automated Disposisi
-                </h4>
-                <p style="font-size: 0.9rem; margin-bottom: 15px">
-                  Sistem menyarankan tindakan segera kepada:
-                </p>
+              <!-- Keyword Detection Panel -->
+              <div style="display: flex; flex-direction: column; gap: 20px;">
+                <!-- Trigger Keywords -->
+                <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                  <h4 style="margin-bottom: 15px; color: #1a1a1a;">
+                    <i class="fa-solid fa-key text-warning"></i> Trigger Keywords Detected
+                  </h4>
+                  <div class="keyword-cloud" id="keywordCloud" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <!-- Keywords will be inserted here -->
+                  </div>
+                </div>
 
-                <div class="form-group">
-                  <label class="form-label" style="font-size: 0.85rem"
-                    >Penanggung Jawab</label
-                  >
-                  <select class="form-select">
-                    <option selected>Kepala Dinas Kesehatan</option>
-                    <option>Humas Pemkab</option>
-                    <option>Tim Respon Cepat</option>
+                <!-- Influencer Alert -->
+                <div style="background: #fff; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                  <h4 style="margin-bottom: 15px; color: #1a1a1a;">
+                    <i class="fa-solid fa-user-tie text-danger"></i> High-Impact Accounts
+                  </h4>
+                  <div class="influencer-list" id="influencerList">
+                    <!-- Influencers will be inserted here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alert Escalation Panel -->
+            <div style="margin-top: 25px; background: #fffbe6; padding: 20px; border-radius: 12px; border: 2px solid #f59e0b;">
+              <div class="flex-between" style="margin-bottom: 15px;">
+                <h4 style="color: #1e40af;">
+                  <i class="fa-solid fa-exclamation-triangle"></i> Alert Escalation Matrix
+                </h4>
+                <div class="alert-level">
+                  <span class="level-badge level-critical" id="alertLevelBadge">CRITICAL LEVEL</span>
+                </div>
+              </div>
+              
+              <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; align-items: end;">
+                <div>
+                  <label class="form-label">Detected Issue</label>
+                  <input type="text" class="form-input" id="detectedIssue" readonly value="Video viral antrian RSUD Sleman - 50K views in 2 hours">
+                </div>
+                <div>
+                  <label class="form-label">Escalation To</label>
+                  <select class="form-select" id="escalationTarget">
+                    <option value="dinkes" data-phone="0274-555-1001" data-wa="628123456001" data-email="dinkes@slemankab.go.id">Dinas Kesehatan</option>
+                    <option value="humas" data-phone="0274-555-1002" data-wa="628123456002" data-email="humas@slemankab.go.id">Humas Pemkab Sleman</option>
+                    <option value="crisis" data-phone="0274-555-1003" data-wa="628123456003" data-email="crisis@slemankab.go.id">Tim Crisis Management</option>
+                    <option value="sekda" data-phone="0274-555-1004" data-wa="628123456004" data-email="sekda@slemankab.go.id">Sekretariat Daerah</option>
+                    <option value="diskominfo" data-phone="0274-555-1005" data-wa="628123456005" data-email="diskominfo@slemankab.go.id">Dinas Kominfo</option>
+                    <option value="satpol" data-phone="0274-555-1006" data-wa="628123456006" data-email="satpol@slemankab.go.id">Satpol PP</option>
                   </select>
                 </div>
-
-                <div class="form-group">
-                  <label class="form-label" style="font-size: 0.85rem"
-                    >Instruksi Default</label
-                  >
-                  <textarea class="form-input" rows="3">
-Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penambahan loket. Lapor progress.</textarea
-                  >
+                <div>
+                  <label class="form-label">Urgency Level</label>
+                  <select class="form-select" id="urgencyLevel">
+                    <option value="immediate">Immediate (15 menit)</option>
+                    <option value="high">High (30 menit)</option>
+                    <option value="medium">Medium (1 jam)</option>
+                    <option value="low">Low (3 jam)</option>
+                  </select>
                 </div>
+              </div>
 
-                <button
-                  class="btn-generate"
-                  onclick="
-                    alert('Instruksi terkirim via WhatsApp & Email Secure!')
-                  "
-                  style="width: 100%; padding: 10px"
-                >
-                  <i class="fa-solid fa-paper-plane"></i> Kirim Instruksi
+              <!-- Contact Info Display -->
+              <div id="contactInfo" style="margin-top: 15px; padding: 12px; background: white; border-radius: 8px; border: 1px solid #e2e8f0; display: none;">
+                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">📞 Contact Information:</div>
+                <div style="display: flex; gap: 20px; font-size: 0.9rem;">
+                  <div><strong>Phone:</strong> <span id="picPhone">-</span></div>
+                  <div><strong>WhatsApp:</strong> <span id="picWA">-</span></div>
+                  <div><strong>Email:</strong> <span id="picEmail">-</span></div>
+                </div>
+              </div>
+
+              <!-- Escalation Message -->
+              <div style="margin-top: 15px;">
+                <label class="form-label">Escalation Message</label>
+                <textarea class="form-input" id="escalationMessage" rows="3" placeholder="Tulis pesan eskalasi atau biarkan kosong untuk auto-generate..."></textarea>
+              </div>
+              
+              <div style="margin-top: 15px; display: flex; gap: 10px;">
+                <button class="btn-generate" onclick="generateAIEscalationMessage()" style="background: #8b5cf6; color: white;">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Generate AI Message
                 </button>
+                <button class="btn-generate" onclick="sendEscalation()" style="background: #dc2626; color: white;">
+                  <i class="fa-solid fa-paper-plane"></i> Send Escalation
+                </button>
+                <button class="btn-generate" onclick="sendViaWhatsApp()" style="background: #25d366; color: white;">
+                  <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+                </button>
+                <button class="btn-generate" onclick="callPIC()" style="background: #3b82f6; color: white;">
+                  <i class="fa-solid fa-phone"></i> Call PIC
+                </button>
+                <button class="btn-generate" onclick="viewEscalationHistory()" style="background: #6b7280; color: white;">
+                  <i class="fa-solid fa-history"></i> History
+                </button>
+              </div>
+
+              <!-- Escalation Tracking -->
+              <div id="escalationTracking" style="margin-top: 20px; display: none;">
+                <div style="font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: #1a1a1a;">
+                  <i class="fa-solid fa-clock"></i> Escalation Status Tracking
+                </div>
+                
+                <!-- Active Escalations -->
+                <div id="activeEscalations">
+                  <!-- Active escalation cards will be inserted here -->
+                </div>
               </div>
             </div>
           </div>
@@ -1168,19 +1305,25 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
                 <div>
                   <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: #666;">Pilih Permasalahan:</label>
                   <select id="problem-select" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
+                    <option value="">Pilih permasalahan...</option>
                     <option value="jalan-rusak">Jalan Rusak di Condongcatur</option>
                     <option value="sampah">Sampah tidak diangkut</option>
+                    <option value="fasilitas-umum">Fasilitas Umum Rusak</option>
                     <option value="pelayanan">Pelayanan kesehatan lambat</option>
                     <option value="perizinan">Proses perizinan rumit</option>
+                    <option value="infrastruktur">Infrastruktur perlu perbaikan</option>
                   </select>
-                  <button onclick="generateAIContent()" style="width: 100%; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer;">
-                    <i class="fa-solid fa-magic"></i> Generate Video Script
+                  <button onclick="generateAIContent()" style="width: 100%; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 500;">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Video Script
                   </button>
                 </div>
                 <div>
                   <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: #666;">Hasil AI:</label>
-                  <div id="ai-result" style="width: 100%; height: 120px; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background: #f9f9f9; font-size: 0.85rem; overflow-y: auto;">
-                    Klik "Generate" untuk membuat video script...
+                  <div id="ai-result" style="width: 100%; height: 200px; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f8fafc; font-size: 0.9rem; line-height: 1.5; overflow-y: auto; color: #334155;">
+                    <div style="display: flex; flex-direction: column; height: 100%; justify-content: center; align-items: center; color: #94a3b8;">
+                      <i class="fa-solid fa-wand-magic-sparkles" style="font-size: 1.5rem; margin-bottom: 8px; color: #cbd5e1;"></i>
+                      <div>Pilih permasalahan dan klik "Generate" untuk membuat video script</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1191,5 +1334,84 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
     </main>
 
     <script src="js/script.js"></script>
+    <script>
+      // Mapping pesan ke pilihan masalah
+      const messageToProblemMap = {
+        'tiktok-1': 'jalan-rusak',
+        'tiktok-2': 'sampah',
+        'tiktok-3': 'fasilitas-umum',
+        'twitter-1': 'pelayanan',
+        'twitter-2': 'perizinan',
+        'twitter-3': 'infrastruktur'
+      };
+
+      // Update fungsi showMessageDetail
+      function showMessageDetail(messageId) {
+        // Sembunyikan semua catatan admin
+        document.querySelectorAll('.message-admin-note').forEach(note => {
+          note.style.display = 'none';
+        });
+        
+        // Hapus class active dari semua pesan
+        document.querySelectorAll('.message-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        // Tampilkan catatan admin yang dipilih
+        const noteElement = document.getElementById(messageId + '-note');
+        if (noteElement) {
+          noteElement.style.display = 'block';
+        }
+        
+        // Tambah class active ke pesan yang dipilih
+        event.currentTarget.classList.add('active');
+        
+        // Update peta (jika ada)
+        const locationMap = {
+          'tiktok-1': { lat: -7.7616, lng: 110.3877, zoom: 15, name: "Condongcatur" },
+          'tiktok-2': { lat: -7.7828, lng: 110.3789, zoom: 15, name: "Depok" },
+          'tiktok-3': { lat: -7.7956, lng: 110.3695, zoom: 15, name: "Sleman Kota" },
+          'twitter-1': { lat: -7.8156, lng: 110.3595, zoom: 15, name: "Tempel" },
+          'twitter-2': { lat: -7.7456, lng: 110.3795, zoom: 15, name: "Ngemplak" },
+          'twitter-3': { lat: -7.7556, lng: 110.3895, zoom: 15, name: "Gamping" }
+        };
+        
+        const location = locationMap[messageId];
+        if (location && window.inboxMap) {
+          window.inboxMap.setView([location.lat, location.lng], location.zoom);
+          
+          // Hapus highlight circle yang lama jika ada
+          if (window.currentHighlight) {
+            window.inboxMap.removeLayer(window.currentHighlight);
+            window.currentHighlight = null;
+          }
+        }
+        
+        // Update dropdown AI Content Generator
+        const problemSelect = document.getElementById('problem-select');
+        if (problemSelect && messageToProblemMap[messageId]) {
+          problemSelect.value = messageToProblemMap[messageId];
+        }
+      }
+
+      // Fungsi untuk generate konten AI
+      function generateAIContent() {
+        const problemSelect = document.getElementById('problem-select');
+        const aiResult = document.getElementById('ai-result');
+        const problems = {
+          'jalan-rusak': `📌 <strong>Script Video Respon Jalan Rusak</strong><br><br>"Selamat siang warga Sleman yang kami banggakan,<br><br>Kami telah menerima laporan mengenai kondisi jalan di Condongcatur. Tim kami sedang melakukan pengecekan dan akan segera melakukan perbaikan. Mohon kesabaran dan kehati-hatian saat melintas di lokasi tersebut.<br><br>Terima kasih atas laporannya, mari kita jaga bersama infrastruktur kita. #SlemanMajuBersama"`,
+          'sampah': `📌 <strong>Script Video Respon Sampah Menumpuk</strong><br><br>"Halo warga Sleman,<br><br>Kami mencatat keluhan tentang penumpukan sampah di area Depok. Tim kebersihan telah diarahkan untuk segera menangani hal ini. Kami juga mengingatkan jadwal pengangkutan sampah rutin setiap hari Senin, Rabu, dan Jumat.<br><br>Mari kita jaga kebersihan bersama. Terima kasih atas laporannya! #SlemanBersih"`,
+          'fasilitas-umum': `📌 <strong>Script Video Respon Fasilitas Umum</strong><br><br>"Perhatian warga Sleman,<br><br>Kami menerima laporan kerusakan fasilitas umum di area Sleman Kota. Tim teknis akan segera melakukan pengecekan dan perbaikan. Mohon melaporkan jika ada fasilitas lain yang membutuhkan perhatian.<br><br>Terima kasih atas perhatiannya. #SlemanNyaman"`,
+          'pelayanan': `📌 <strong>Script Video Respon Pelayanan Kesehatan</strong><br><br>"Kepada warga Sleman yang terhormat,<br><br>Kami mencatat keluhan tentang pelayanan kesehatan di wilayah Tempel. Kami akan melakukan evaluasi dan peningkatan kualitas layanan. Jika ada keluhan lebih lanjut, silakan hubungi hotline kami di 1500-123.<br><br>Terima kasih atas masukan yang membangun. #SlemanSehat"`,
+          'perizinan': `📌 <strong>Script Video Panduan Perizinan</strong><br><br>"Halo pelaku usaha di Sleman,<br><br>Kami memahami kendala dalam proses perizinan. Berikut panduan singkatnya:<br>1. Kunjungi Dinas Penanaman Modal dan PTSP<br>2. Bawa dokumen lengkap (KTP, NPWP, dll)<br>3. Proses verifikasi maksimal 3 hari kerja<br><br>Info lebih lanjut kunjungi sleman.go.id/perizinan<br>#SlemanMajuUMKMnya"`,
+          'infrastruktur': `📌 <strong>Script Video Respon Infrastruktur</strong><br><br>"Kepada warga Gamping yang budiman,<br><br>Kami mencatat laporan tentang kondisi infrastruktur di wilayah Anda. Laporan ini akan masuk dalam prioritas perbaikan kuartal ini. Perbaikan akan dilaksanakan secara bertahap menyesuaikan dengan anggaran yang tersedia.<br><br>Terima kasih atas pengertiannya. #SlemanMaju"`
+        };
+
+        if (problemSelect && aiResult) {
+          const selectedProblem = problemSelect.value;
+          aiResult.innerHTML = problems[selectedProblem] || 'Pilih masalah terlebih dahulu.';
+        }
+      }
+    </script>
   </body>
 </html>
