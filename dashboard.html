@@ -271,29 +271,31 @@
         <section id="dashboard" class="view-section active">
           <div class="stats-grid">
             <div class="stat-card">
-              <div class="stat-label">Total Mention (24h)</div>
-              <div class="stat-value">15,420</div>
+              <div class="stat-label">Total Mention Hari Ini</div>
+              <div class="stat-value">468</div>
               <div class="stat-trend text-success">
-                <i class="fa-solid fa-arrow-up"></i> 12% vs yesterday
+                <i class="fa-solid fa-arrow-up"></i> +15.3%
               </div>
             </div>
             <div class="stat-card positive">
-              <div class="stat-label">Sentiment Score</div>
-              <div class="stat-value text-success">68/100</div>
-              <div class="stat-trend text-muted">Aman Terkendali</div>
+              <div class="stat-label">Isu Aktif</div>
+              <div class="stat-value">5</div>
+              <div class="stat-trend text-warning">
+                <i class="fa-solid fa-exclamation-triangle"></i> 1 critical
+              </div>
             </div>
             <div class="stat-card warning">
-              <div class="stat-label">Potential Reach</div>
-              <div class="stat-value">2.5M</div>
-              <div class="stat-trend text-primary">
-                <i class="fa-solid fa-eye"></i> High Visibility
+              <div class="stat-label">Terselesaikan Hari Ini</div>
+              <div class="stat-value">1</div>
+              <div class="stat-trend text-success">
+                <i class="fa-solid fa-arrow-up"></i> +8.5%
               </div>
             </div>
             <div class="stat-card negative">
-              <div class="stat-label">Crisis Probability</div>
-              <div class="stat-value text-danger">High</div>
+              <div class="stat-label">Alert Belum Ditangani</div>
+              <div class="stat-value">2</div>
               <div class="stat-trend text-danger">
-                <i class="fa-solid fa-fire"></i> Isu Viral Detected
+                <i class="fa-solid fa-clock"></i> Perlu tindakan
               </div>
             </div>
           </div>
@@ -305,7 +307,7 @@
             >
               <div class="flex-between" style="margin-bottom: 20px">
                 <h3 style="font-size: 1rem; color: #1a1a1a">
-                  Real-time Sentinel Overview
+                  Statistik Sentimen Real-time
                 </h3>
                 <div style="font-size: 0.8rem; display: flex; gap: 10px">
                   <span style="display: flex; align-items: center; gap: 5px"
@@ -330,6 +332,17 @@
                     ></div>
                     Negatif</span
                   >
+                  <span style="display: flex; align-items: center; gap: 5px"
+                    ><div
+                      style="
+                        width: 10px;
+                        height: 10px;
+                        background: #f59e0b;
+                        border-radius: 2px;
+                      "
+                    ></div>
+                    Netral</span
+                  >
                 </div>
               </div>
               <div style="height: 300px; width: 100%">
@@ -337,35 +350,28 @@
               </div>
             </div>
 
-            <div class="live-stream">
+            <div class="chart-container">
               <h3 style="font-size: 1rem; margin-bottom: 10px; color: #1a1a1a">
-                Live Monitor
+                Distribusi Kategori Isu
               </h3>
-              <div class="stream-list" id="streamList"></div>
+              <div style="height: 300px; width: 100%">
+                <canvas id="issueCategoryChart"></canvas>
+              </div>
             </div>
 
-            <div class="map-container">
+            <div class="chart-container">
               <h3
                 style="
                   font-size: 1rem;
-                  position: absolute;
-                  top: 20px;
-                  left: 20px;
-                  z-index: 2;
+                  margin-bottom: 10px;
                   color: #1a1a1a;
                 "
               >
-                Regional Heatmap
+                Top Keywords Trending
               </h3>
-              <div
-                id="dashboardMap"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  border-radius: 12px;
-                  z-index: 1;
-                "
-              ></div>
+              <div style="height: 300px; width: 100%">
+                <canvas id="topKeywordsChart"></canvas>
+              </div>
             </div>
           </div>
         </section>
@@ -379,7 +385,7 @@
             >
               <div class="flex-between" style="margin-bottom: 20px">
                 <h3 style="font-size: 1.1rem; color: #1a1a1a">
-                  Regional Comparative Analysis
+                  Analisis Regional
                 </h3>
                 <select class="form-select" style="width: 150px">
                   <option>Sleman</option>
@@ -393,7 +399,30 @@
                 <canvas id="competitorChart"></canvas>
               </div>
             </div>
+            
+            <!-- Pie Chart Distribusi Isu -->
+            <div
+              class="chart-container"
+              style="grid-column: 2 / 3; height: 400px; position: relative"
+            >
+              <div class="flex-between" style="margin-bottom: 20px">
+                <h3 style="font-size: 1.1rem; color: #1a1a1a">
+                  Distribusi Isu per Kategori
+                </h3>
+                <select class="form-select" style="width: 150px" id="regionFilter">
+                  <option value="all">Semua Kategori</option>
+                  <option value="infra">Infrastruktur</option>
+                  <option value="sampah">Sampah</option>
+                  <option value="kesehatan">Kesehatan</option>
+                  <option value="pendidikan">Pendidikan</option>
+                </select>
+              </div>
+              <div style="height: 300px; width: 100%">
+                <canvas id="issueDistributionChart"></canvas>
+              </div>
+            </div>
           </div>
+          
           <div
             style="
               display: grid;
@@ -1604,7 +1633,7 @@
         }
         
         if (viewId === "dashboard") {
-          setTimeout(() => initDashboardMap(), 100);
+          setTimeout(() => initializeTopKeywords(), 100);
         }
         
         if (viewId === "issues") {
@@ -1616,46 +1645,140 @@
         }
       }
       
-      // Initialize dashboard map
-      function initDashboardMap() {
-        const mapContainer = document.getElementById('dashboardMap');
-        if (mapContainer && !window.dashboardMapInstance) {
-          try {
-            // Create Leaflet map for dashboard
-            window.dashboardMapInstance = L.map('dashboardMap').setView([-7.7156, 110.3556], 11);
-            
-            // Add tile layer
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-              attribution: '&copy; OpenStreetMap contributors',
-              subdomains: 'abcd',
-              maxZoom: 19
-            }).addTo(window.dashboardMapInstance);
-            
-            // Add sample heatmap points
-            const heatmapPoints = [
-              {lat: -7.7828, lng: 110.3789, intensity: 0.8},
-              {lat: -7.7956, lng: 110.3695, intensity: 0.6},
-              {lat: -7.8156, lng: 110.3595, intensity: 0.4},
-              {lat: -7.7456, lng: 110.3795, intensity: 0.7},
-              {lat: -7.7556, lng: 110.3895, intensity: 0.5}
-            ];
-            
-            // Add heatmap circles
-            heatmapPoints.forEach(point => {
-              L.circle([point.lat, point.lng], {
-                radius: 2000 * point.intensity,
-                fillColor: point.intensity > 0.6 ? '#ef4444' : point.intensity > 0.4 ? '#f59e0b' : '#3b82f6',
-                color: '#fff',
-                weight: 2,
-                opacity: 0.8,
-                fillOpacity: 0.4
-              }).addTo(window.dashboardMapInstance);
-            });
-            
-            console.log('Dashboard map initialized successfully');
-          } catch (error) {
-            console.error('Error initializing dashboard map:', error);
-          }
+      // Initialize top keywords
+      function initializeTopKeywords() {
+        const ctx = document.getElementById('topKeywordsChart');
+        if (ctx) {
+          const keywordsData = {
+            labels: ['jalan rusak', 'sampah menumpuk', 'pelayanan kesehatan', 'listrik padam', 'pendidikan online', 'administrasi kependudukan'],
+            datasets: [{
+              label: 'Total Mentions (24 Jam)',
+              data: [1247, 892, 756, 634, 521, 323],
+              backgroundColor: [
+                'rgba(239, 68, 68, 0.8)',   // merah - jalan rusak
+                'rgba(245, 158, 11, 0.8)',  // amber - sampah
+                'rgba(59, 130, 246, 0.8)',  // biru - kesehatan
+                'rgba(139, 92, 246, 0.8)',  // ungu - listrik
+                'rgba(16, 185, 129, 0.8)',  // hijau - pendidikan
+                'rgba(107, 114, 128, 0.8)'  // abu-abu - administrasi
+              ],
+              borderColor: [
+                '#ef4444',
+                '#f59e0b', 
+                '#3b82f6',
+                '#8b5cf6',
+                '#10b981',
+                '#6b7280'
+              ],
+              borderWidth: 2,
+              borderRadius: 8,
+              borderSkipped: false,
+            }]
+          };
+
+          const config = {
+            type: 'bar',
+            data: keywordsData,
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: false
+                },
+                title: {
+                  display: true,
+                  text: 'Top Keywords Analysis (24 Jam)',
+                  font: {
+                    size: 14,
+                    weight: 'bold'
+                  },
+                  color: '#1a1a1a',
+                  padding: {
+                    bottom: 20
+                  }
+                },
+                tooltip: {
+                  backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                  titleColor: '#1a1a1a',
+                  bodyColor: '#374151',
+                  borderColor: '#e5e7eb',
+                  borderWidth: 1,
+                  padding: 12,
+                  callbacks: {
+                    label: function(context) {
+                      const value = context.parsed.y;
+                      const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                      const percentage = ((value / total) * 100).toFixed(1);
+                      return `Mentions: ${value.toLocaleString()} (${percentage}%)`;
+                    },
+                    afterLabel: function(context) {
+                      const trends = ['📈 Trending Up', '📈 Trending Up', '📉 Trending Down', '📈 Trending Up', '➡️ Stable', '📉 Trending Down'];
+                      return `Status: ${trends[context.dataIndex]}`;
+                    }
+                  }
+                }
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: 'Jumlah Mentions',
+                    color: '#6b7280',
+                    font: {
+                      size: 12
+                    }
+                  },
+                  grid: {
+                    color: 'rgba(229, 231, 235, 0.5)',
+                    drawBorder: false
+                  },
+                  ticks: {
+                    color: '#6b7280',
+                    font: {
+                      size: 11
+                    }
+                  }
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: 'Keywords',
+                    color: '#6b7280',
+                    font: {
+                      size: 12
+                    }
+                  },
+                  grid: {
+                    display: false,
+                    drawBorder: false
+                  },
+                  ticks: {
+                    color: '#6b7280',
+                    font: {
+                      size: 10
+                    },
+                    maxRotation: 45,
+                    minRotation: 45
+                  }
+                }
+              },
+              animation: {
+                duration: 1500,
+                easing: 'easeOutBounce',
+                delay: (context) => {
+                  let delay = 0;
+                  if (context.type === 'data' && context.mode === 'default') {
+                    delay = context.dataIndex * 100;
+                  }
+                  return delay;
+                }
+              }
+            }
+          };
+
+          new Chart(ctx, config);
         }
       }
       
@@ -1691,10 +1814,10 @@
         // Initialize dashboard components
         initializeDashboard();
         
-        // Auto-initialize dashboard map if dashboard is active
+        // Auto-initialize dashboard components if dashboard is active
         if (document.getElementById('dashboard').classList.contains('active')) {
           setTimeout(() => {
-            initDashboardMap();
+            initializeTopKeywords();
           }, 100);
         }
       });
@@ -1704,11 +1827,21 @@
         // Initialize main chart
         initializeMainChart();
         
-        // Initialize live stream
-        initializeLiveStream();
+        // Initialize issue category chart
+        initializeIssueCategoryChart();
+        
+        // Initialize top keywords
+        initializeTopKeywords();
         
         // Initialize stats
         updateDashboardStats();
+        
+        // Initialize regional comparison chart
+        initCompetitorChart();
+        
+        // Initialize issue distribution pie chart
+        initIssueDistributionChart();
+        initIssueDistributionChart();
       }
       
       // Initialize main chart
@@ -1721,15 +1854,21 @@
               labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
               datasets: [{
                 label: 'Positif',
-                data: [120, 135, 125, 145, 160, 155, 140],
+                data: [450, 520, 480, 510, 580, 550, 490],
                 borderColor: '#10b981',
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 tension: 0.4
               }, {
                 label: 'Negatif',
-                data: [80, 95, 110, 125, 115, 105, 90],
+                data: [120, 95, 110, 85, 75, 90, 105],
                 borderColor: '#ef4444',
                 backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                tension: 0.4
+              }, {
+                label: 'Netral',
+                data: [280, 320, 310, 340, 360, 330, 300],
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245, 158, 11, 0.1)',
                 tension: 0.4
               }]
             },
@@ -1738,12 +1877,59 @@
               maintainAspectRatio: false,
               plugins: {
                 legend: {
-                  display: false
+                  display: true,
+                  position: 'top'
+                },
+                title: {
+                  display: true,
+                  text: 'Analisis Sentimen Masyarakat Sleman (24 Jam Terakhir)',
+                  font: {
+                    size: 16,
+                    weight: 'bold'
+                  }
+                },
+                tooltip: {
+                  callbacks: {
+                    afterBody: function(context) {
+                      const keywords = {
+                        '00:00': ['jalan rusak', 'sampah', 'pemadaman'],
+                        '04:00': ['listrik padam', 'air bersih', 'kesehatan'],
+                        '08:00': ['pendidikan', 'infrastruktur', 'pelayanan'],
+                        '12:00': ['administrasi', 'keamanan', 'UMKM'],
+                        '16:00': ['wisata', 'budaya', 'transportasi'],
+                        '20:00': ['lingkungan', 'investasi', 'pertanian'],
+                        '24:00': ['hukum', 'perizinan', 'tata kelola']
+                      };
+                      
+                      const hour = context[0].label;
+                      const keywordList = keywords[hour] || [];
+                      
+                      if (keywordList.length > 0) {
+                        return `
+                          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #e2e8f0;">
+                            <strong style="color: #1a1a1a;">Keyword Trending:</strong><br/>
+                            ${keywordList.map(kw => `<span style="background: #f1f5f9; color: white; padding: 2px 6px; border-radius: 4px; margin: 2px; font-size: 0.75rem;">${kw}</span>`).join(' ')}
+                          </div>
+                        `;
+                      }
+                      return '';
+                    }
+                  }
                 }
               },
               scales: {
                 y: {
-                  beginAtZero: true
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: 'Jumlah Mention'
+                  }
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: 'Waktu'
+                  }
                 }
               }
             }
@@ -1751,43 +1937,72 @@
         }
       }
       
-      // Initialize live stream
-      function initializeLiveStream() {
-        const streamList = document.getElementById('streamList');
-        if (streamList) {
-          const mockStreams = [
-            {
-              platform: 'Twitter',
-              user: '@warga_sleman',
-              content: 'Terima kasih Pak Bupati atas perhatian terhadap infrastruktur jalan di wilayah kami',
-              sentiment: 'positive',
-              time: '2 menit lalu'
-            },
-            {
-              platform: 'TikTok',
-              user: '@pengunjung_kaliurang',
-              content: 'Video viral tentang kemacetan di Kaliurang, perlu ada solusi segera',
-              sentiment: 'negative',
-              time: '5 menit lalu'
-            },
-            {
-              platform: 'Instagram',
-              user: '@komunitas_sleman',
-              content: 'Acara bersih-bersih sungai berjalan lancar, masyarakat antusias',
-              sentiment: 'positive',
-              time: '8 menit lalu'
+      // Initialize issue category chart
+      function initializeIssueCategoryChart() {
+        const ctx = document.getElementById('issueCategoryChart');
+        if (ctx) {
+          const issueData = {
+            labels: ['Infrastruktur Jalan', 'Pengelolaan Sampah', 'Layanan Kesehatan', 'Pendidikan'],
+            datasets: [{
+              data: [45, 32, 28, 15],
+              backgroundColor: [
+                '#ef4444', // High severity - red
+                '#f59e0b', // Medium severity - amber  
+                '#f59e0b', // Medium severity - amber
+                '#3b82f6'  // Low severity - blue
+              ],
+              borderWidth: 2,
+              borderColor: '#ffffff',
+              hoverBorderWidth: 3,
+              hoverBorderColor: '#1a1a1a'
+            }]
+          };
+
+          const config = {
+            type: 'pie',
+            data: issueData,
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: 'bottom',
+                  labels: {
+                    padding: 15,
+                    font: {
+                      size: 11
+                    },
+                    generateLabels: function(chart) {
+                      const data = chart.data;
+                      return data.labels.map((label, i) => ({
+                        text: `${label} (${data.datasets[0].data[i]} isu)`,
+                        fillStyle: data.datasets[0].backgroundColor[i],
+                        hidden: false,
+                        index: i
+                      }));
+                    }
+                  }
+                },
+                tooltip: {
+                  callbacks: {
+                    label: function(context) {
+                      const label = context.label || '';
+                      const value = context.parsed;
+                      const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                      const percentage = ((value / total) * 100).toFixed(1);
+                      return `${label}: ${value} isu (${percentage}%)`;
+                    }
+                  }
+                }
+              },
+              animation: {
+                animateRotate: true,
+                animateScale: false
+              }
             }
-          ];
-          
-          streamList.innerHTML = mockStreams.map(stream => `
-            <div class="stream-item ${stream.sentiment}">
-              <div class="stream-header">
-                <span>${stream.platform} • ${stream.user}</span>
-                <span>${stream.time}</span>
-              </div>
-              <div class="stream-content">${stream.content}</div>
-            </div>
-          `).join('');
+          };
+
+          new Chart(ctx, config);
         }
       }
       
